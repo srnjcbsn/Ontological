@@ -68,15 +68,18 @@ relation(part_for,pp_cell,islet_of_langerhans).
 
 relation(is_aa,a,b).
 relation(is_aa,b,c).
-relation(is_aa,h,d).
+relation(is_aa,c,d).
+relation(is_aa,d,e).
 
 
 transative(secretes, _, _) :- !, fail.
-transative(R,A,B):-relation(R,A,B),!.
-transative(R,A,C):-relation(R,A,B),relation(R,B,C),!.
 
-query(R, A, B) :- relation(R,A,B).
-query(R, A, B) :- !,relation(R,A,_),transative(R,A,B).
+transative(R,A,B):-relation(R,A,B).
+transative(R,A,C):-relation(R,A,B),transative(R,B,C).
+
+
+query(R, A, B) :- transative(R,A,B).
+query(R, A, B) :- !,relation(R,A,B).
 
 is_a(A,B):-!,relation(is_a,A,B).
 is_a(A,B):-!,relation(is_a,A,_),transative(is_a,A,B).
