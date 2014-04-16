@@ -39,7 +39,7 @@ relation(has_part,pancreas,endocrine_pancreas).
 relation(has_part,exocrine_pancreas,exocrine_pancreatic_cell).
 relation(has_part,exocrine_pancreas,exocrine_pancreatic_cell).
 
-relation(has_part,endcrine_pancreas,islet_of_langerhans).
+relation(has_part,endocrine_pancreas,islet_of_langerhans).
 
 relation(has_part,islet_of_langerhans,alpha_cell).
 relation(has_part,islet_of_langerhans,beta_cell).
@@ -72,14 +72,13 @@ relation(is_aa,c,d).
 relation(is_aa,d,e).
 
 
-transative(secretes, _, _) :- !, fail.
+%transative(secretes, _, _) :- !, fail.
 
-transative(R,A,B):-relation(R,A,B).
-transative(R,A,C):-relation(R,A,B),transative(R,B,C).
+transitivity(R,A,B):-relation(R,A,B).
+transitivity(R,A,C):-relation(R,A,B),transitivity(R,B,C).
 
 
-query(R, A, B) :- transative(R,A,B).
-query(R, A, B) :- !,relation(R,A,B).
+query(R, A, B) :- transitivity(R,A,B).
+%query(R, A, B) :- relation(R,A,B).
 
-is_a(A,B):-!,relation(is_a,A,B).
-is_a(A,B):-!,relation(is_a,A,_),transative(is_a,A,B).
+%query_clean(R,A,B):-setof(_,query(R,A,B),_).
