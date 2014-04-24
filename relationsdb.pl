@@ -37,7 +37,7 @@ relation(has_part,pancreas,exocrine_pancreas).
 relation(has_part,pancreas,endocrine_pancreas).
 
 relation(has_part,exocrine_pancreas,exocrine_pancreatic_cell).
-relation(has_part,exocrine_pancreas,exocrine_pancreatic_cell).
+relation(has_part,exocrine_pancreas,duct).
 
 relation(has_part,endocrine_pancreas,islet_of_langerhans).
 
@@ -56,9 +56,9 @@ relation(part_for,exocrine_pancreas,pancreas).
 relation(part_for,endocrine_pancreas,pancreas).
 
 relation(part_for,exocrine_pancreatic_cell,exocrine_pancreas).
-relation(part_for,exocrine_pancreatic_cell,exocrine_pancreas).
+relation(part_for,duct,exocrine_pancreas).
 
-relation(part_for,islet_of_langerhans,endcrine_pancreas).
+relation(part_for,islet_of_langerhans,endocrine_pancreas).
 
 relation(part_for,alpha_cell,islet_of_langerhans).
 relation(part_for,beta_cell,islet_of_langerhans).
@@ -66,19 +66,10 @@ relation(part_for,delta_cell,islet_of_langerhans).
 relation(part_for,pp_cell,islet_of_langerhans).
 
 
-relation(is_aa,a,b).
-relation(is_aa,b,c).
-relation(is_aa,c,d).
-relation(is_aa,d,e).
-
-
-%transative(secretes, _, _) :- !, fail.
 
 transitivity(R,A,B):-relation(R,A,B).
 transitivity(R,A,C):-relation(R,A,B),transitivity(R,B,C).
 
 
 query(R, A, B) :- transitivity(R,A,B).
-%query(R, A, B) :- relation(R,A,B).
-
-%query_clean(R,A,B):-setof(_,query(R,A,B),_).
+query(part_of, A, B) :-query(part_for,A,B),query(has_part,B,A). 
