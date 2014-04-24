@@ -1,3 +1,32 @@
+class(cell).
+class(nervous_system).
+class(exocrine_cell).
+class(endocrine_cell).
+class(stem_cell).
+class(neuronal_schwann_cell).
+class(adult_stem_cell).
+class(embryonic_stemm_cell).
+class(exocrine_pancreatic_cell).
+class(endocrine_pancreatic_cell).
+class(centroacinar_cell).
+class(acinar_cell).
+class(alpha_cell).
+class(beta_cell).
+class(delta_cell).
+class(pp_cell).
+class(pancreas).
+class(exocrine_pancreas).
+class(endocrine_pancreas).
+class(islet_of_langerhans).
+class(duct).
+class(glucagon).
+class(insulin).
+class(gastrin).
+class(somatostatin).
+class(pancreatic_cell).
+class(capillary).
+
+
 % is_a relationships
 
 relation(is_a, exocrine_cell, cell).
@@ -65,18 +94,3 @@ relation(part_for,beta_cell,islet_of_langerhans).
 relation(part_for,delta_cell,islet_of_langerhans).
 relation(part_for,pp_cell,islet_of_langerhans).
 
-
-
-transitivity(R,A,B):-relation(R,A,B).
-transitivity(R,A,C):-relation(R,A,B),transitivity(R,B,C).
-
-
-query(R, A, B) :- transitivity(R,A,B).
-query(part_of, A, B) :-query(part_for,A,B),query(has_part,B,A). 
-
-overlap(C, D, X) :- 
-	query(is_a, X, C), 
-	query(is_a, X, D), 
-	C @< D,
-	\+ query(is_a, C, D),
-	\+ query(is_a, D, C).
