@@ -73,3 +73,10 @@ transitivity(R,A,C):-relation(R,A,B),transitivity(R,B,C).
 
 query(R, A, B) :- transitivity(R,A,B).
 query(part_of, A, B) :-query(part_for,A,B),query(has_part,B,A). 
+
+overlap(C, D, X) :- 
+	query(is_a, X, C), 
+	query(is_a, X, D), 
+	C @< D,
+	\+ query(is_a, C, D),
+	\+ query(is_a, D, C).
