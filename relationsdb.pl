@@ -25,6 +25,7 @@ class(gastrin).
 class(somatostatin).
 class(pancreatic_cell).
 class(capillary).
+class(pancreatic_polypeptide).
 
 
 % is_a relationships
@@ -56,12 +57,12 @@ relation(secretes, alpha_cell, glucagon).
 relation(secretes, beta_cell, insulin).
 relation(secretes, delta_cell,  gastrin).
 relation(secretes, delta_cell, somatostatin).
+relation(secretes, pp_cell, pancreatic_polypeptide).
 
 
 % has_part relationships
 
 relation(has_part,nervous_system,neuronal_schwann_cell).
-
 relation(has_part,pancreas,exocrine_pancreas).
 relation(has_part,pancreas,endocrine_pancreas).
 
