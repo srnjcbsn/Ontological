@@ -86,7 +86,6 @@ relation(part_for,exocrine_pancreas,pancreas).
 relation(part_for,endocrine_pancreas,pancreas).
 
 relation(part_for,exocrine_pancreatic_cell,exocrine_pancreas).
-relation(part_for,duct,exocrine_pancreas).
 
 relation(part_for,islet_of_langerhans,endocrine_pancreas).
 

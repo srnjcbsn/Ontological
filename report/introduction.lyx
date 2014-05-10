@@ -68,7 +68,7 @@
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -294,7 +294,7 @@ path [hasa] (langerhans) -- (capillary);
 
 	
 \backslash
-path [partof] (duct) -- (exopancreas);
+path [hasa] (exopancreas) -- (duct);
 \end_layout
 
 \begin_layout Plain Layout
