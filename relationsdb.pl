@@ -61,8 +61,7 @@ relation(secretes, pancreatic_polypeptide).
 
 
 % has_part relationships
-
-pprelation(has_part,nervous_system,neuronal_schwann_cell).
+relation(has_part,nervous_system,neuronal_schwann_cell).
 relation(has_part,pancreas,exocrine_pancreas).
 relation(has_part,pancreas,endocrine_pancreas).
 
