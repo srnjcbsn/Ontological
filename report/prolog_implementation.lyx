@@ -59,6 +59,66 @@
 
 \begin_body
 
+\begin_layout Standard
+Our prolog program is designed for effective class relationship queries
+ in the pancreas ontology.
+ We have our program in two parts, first is the database which has all the
+ raw data of the ontology written into it.
+ The second part is definitions for the queries as defined by the CRL.
+\end_layout
+
+\begin_layout Subsection*
+Usage
+\end_layout
+
+\begin_layout Standard
+To use the program we have defined a set of different predicates which the
+ user can utilize.
+\end_layout
+
+\begin_layout Paragraph*
+Querying the relations
+\end_layout
+
+\begin_layout Standard
+To query the database on different relations we have defined the predicate
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+:- query(R, A, B)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+R is the relation that the user want to check, which can be is_a, has_a,
+ etc.
+ it is also possible to leave R unbounded, such that the program will try
+ to find all the relations instead, instead of just checking an specific.
+\end_layout
+
+\begin_layout Description
+A,
+\begin_inset space ~
+\end_inset
+
+B is the two classes which the user want to check whether the given relation
+ holds true, the full query should be read as A R B, for instance pp_cell
+ is_a cell.
+ 
+\end_layout
+
 \begin_layout Itemize
 Explain usage
 \end_layout

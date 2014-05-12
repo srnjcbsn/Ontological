@@ -57,7 +57,7 @@ relation(secretes, alpha_cell, glucagon).
 relation(secretes, beta_cell, insulin).
 relation(secretes, delta_cell,  gastrin).
 relation(secretes, delta_cell, somatostatin).
-relation(secretes, pancreatic_polypeptide).
+relation(secretes, pp_cell, pancreatic_polypeptide).
 
 
 % has_part relationships

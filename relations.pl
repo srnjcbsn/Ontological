@@ -13,13 +13,18 @@ query_redundant(part_of, A, B) :-
 
 query(R, A, B) :- setof(_, query_redundant(R,A,B), _).
 
-find_reflexive(R,A):-R \= is_a, relation(R,A,A).
-find_symmetric(R,A):-query(R,A,B),query(R,B,A).
+is_reflexive(R,A):-R \= is_a, relation(R,A,A).
+is_symmetric(R,A,B):- query(R,A,B), query(R,B,A),\+ (A = B, R = is_a).
 
-overlap(C, D, X) :- 
-	query(is_a, X, C), 
-	query(is_a, X, D).
+ancestor(P, Q):-query(is_a, P, Q).
 
+common_desendent(C, A, B) :- 
+	ancestor(C, A), 
+	ancestor(C, B).
+
+overlap(A, B, X):-
+	common_desendent(X, A, B).
+	
 disjoint(C, D) :- 
 	class(C), 
 	class(D),
