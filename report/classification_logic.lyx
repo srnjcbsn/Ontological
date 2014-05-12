@@ -3,6 +3,9 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\usepackage{stmaryrd}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -25,6 +28,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -59,20 +63,497 @@
 
 \begin_body
 
-\begin_layout Itemize
-Explain what classification logic is.
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{Every }P\text{ is }Q
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{Some }P\text{ is }Q
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{No }P\text{ is }Q
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X\text{ is }P
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\!\left[\text{Every }P\text{ is }Q\right]\!\right]_{I}\triangleq\left[\!\left[P\right]\!\right]_{I}\subseteq\left[\!\left[Q\right]\!\right]_{I}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\!\left[\text{Some }P\text{ is }Q\right]\!\right]_{I}\triangleq\left[\!\left[P\right]\!\right]_{I}\cap\left[\!\left[Q\right]\!\right]_{I}\neq\emptyset
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\!\left[\text{No }P\text{ is }Q\right]\!\right]_{I}\triangleq\left[\!\left[P\right]\!\right]_{I}\cap\left[\!\left[Q\right]\!\right]_{I}=\emptyset
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\!\left[X\text{ is }P\right]\!\right]_{I}\triangleq\left[\!\left[X\right]\!\right]_{I}\in\left[\!\left[P\right]\!\right]_{I}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\text{Some }P\text{ is }Q\qquad\text{Every }Q\text{ is }R}{\text{Some }P\text{ is }R}\tag{\ensuremath{\rho_{4}}}\label{eq:rho4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{X\text{ is }P\qquad\text{Every }P\text{ is }Q}{X\text{ is }Q}\tag{\ensuremath{\rho_{5}}}\label{eq:rho5}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In classification logic, we can descibe class inclusion with the 
+\begin_inset Quotes eld
+\end_inset
+
+Every 
+\begin_inset Formula $\cdot$
+\end_inset
+
+ is 
+\begin_inset Formula $\cdot$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ scheme.
+ For example --- in the pancreas ontology --- we can encode the relation
+ 
+\begin_inset Formula $stem\ cell\ isa\ cell$
+\end_inset
+
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+Every 
+\begin_inset Formula $stem\ cell$
+\end_inset
+
+ is 
+\begin_inset Formula $cell$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ When presented with a particular stem cell 
+\begin_inset Formula $a$
+\end_inset
+
+ (
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $a$
+\end_inset
+
+ is 
+\begin_inset Formula $stem\ cell$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+) we can infer 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $a$
+\end_inset
+
+ is 
+\begin_inset Formula $cell$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ using 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho5"
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\frac{a\ \text{is}\ stem\ cell\qquad\text{Every }stem\ cell\text{ is }cell}{a\text{ is }cell}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the pancreas ontology, we would introduce the relations 
+\begin_inset Quotes eld
+\end_inset
+
+Every 
+\emph on
+endocrine pancreatic cell
+\emph default
+ is 
+\emph on
+pancreatic cell
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Every 
+\emph on
+endocrine pancreatic cell
+\emph default
+ is 
+\emph on
+endocrine cell
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ To describe that the classes 
+\emph on
+endocrine cell
+\emph default
+ and 
+\emph on
+pancreatic cell
+\emph default
+ overlap, we need to be able to infer 
+\begin_inset Quotes eld
+\end_inset
+
+Some 
+\emph on
+endocrine cell
+\emph default
+ is 
+\emph on
+pancreatic cell
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ and vice versa.
+ It is temtping to introduce the inference rule 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho6"
+
+\end_inset
+
+, which would allow us to infer both 
+\begin_inset Quotes eld
+\end_inset
+
+Some 
+\emph on
+pancreatic cell 
+\emph default
+is 
+\emph on
+endocrine pancreatic cell
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Some 
+\emph on
+endocrine cell
+\emph default
+ is 
+\emph on
+endocrine pancreatic cell
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, and then use 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho4"
+
+\end_inset
+
+ to infer the 
+\begin_inset Quotes eld
+\end_inset
+
+Some 
+\begin_inset Formula $\cdot$
+\end_inset
+
+ is 
+\begin_inset Formula $\cdot$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ relations between 
+\emph on
+pancreatic cell 
+\emph default
+and 
+\emph on
+endocrine cell
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\text{Every }P\text{ is }Q}{\text{Some }Q\text{ is }P}\tag{\ensuremath{\rho_{6}}}\label{eq:rho6}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However, in case both 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ are empty classes, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\text{Every }P\text{ is }Q$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ holds true since 
+\begin_inset Formula $\left[\!\left[\text{Every }P\text{ is }Q\right]\!\right]=\emptyset\subseteq\emptyset$
+\end_inset
+
+ is true, but 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\text{Some }Q\text{ is }P$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ does not since 
+\begin_inset Formula $\left[\!\left[\text{Some }Q\text{ is }P\right]\!\right]=\emptyset\cap\emptyset\neq\emptyset$
+\end_inset
+
+ does not hold.
+ Hence, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho6"
+
+\end_inset
+
+ is an unsound inference rule.
+ Instead, we will have to explicitly state which classes overlap using the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Some 
+\begin_inset Formula $\cdot$
+\end_inset
+
+ is 
+\begin_inset Formula $\cdot$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ scheme.
+ In the pancreas example, we would for example state that 
+\begin_inset Quotes eld
+\end_inset
+
+Some 
+\emph on
+pancreatic cell
+\emph default
+ is 
+\emph on
+endocrine pancreatic cell
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+As classification logic operates under the open world assumption, we also
+ have to state which class relationships do not exist.
+ This is accomplished by using the 
+\begin_inset Quotes eld
+\end_inset
+
+No 
+\begin_inset Formula $\cdot$
+\end_inset
+
+ is 
+\begin_inset Formula $\cdot$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ scheme on all disjoint classes.
+ 
 \end_layout
 
 \begin_layout Itemize
-Explain how to describe pancreas example using is a
+Explain what classification logic is
 \end_layout
 
+\begin_layout Itemize
+Explain how to describe pancreas example taxonomy
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Explain how to deal with denials
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-Maybe? add description logic explaination and usage of part_of
+Talk about open world assumption
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Explain how to handle overlapping classes (diamond problem) with 
+\begin_inset Quotes eld
+\end_inset
+
+Some-is
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Talk about how you can handle empty sets
 \end_layout
 
 \end_body
