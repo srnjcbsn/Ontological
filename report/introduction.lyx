@@ -3,6 +3,10 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,shapes,topaths}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -25,6 +29,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -71,6 +76,269 @@ To formally describe the relations of an ontology in logic, there is two
  a modern programming language specifically swi-prolog.
  Furthermore, we will show how to properly specify the logical relationships
  in prolog to avoid the termination problem.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture} 	[ node distance=3cm 	, vert/.style={rectangle,thick,
+ rounded corners=10pt, minimum size=30pt, draw} 	, isa/.style={->, >=stealth',
+ draw} 	, hasa/.style={->, >=stealth', dashed, draw} 	, partof/.style={->,
+ >=stealth', double, draw} 	, text height=1.5ex, text depth=.25ex 	] 	
+\backslash
+node [vert] (cell) at (0,0) {cell}; 	
+\backslash
+node [vert] (exocell) at (-3, -2) {exocrine cell}; 	
+\backslash
+node [vert] (endocell) at (3,-2) {endocrine cell}; 	
+\backslash
+node [vert] (pancell) at (0, -2) {pancreatic cell}; 	
+\backslash
+node [vert] (stemcell) at (-3, 2) {stem cell}; 	
+\backslash
+node [vert] (schwanncell) at (3,2) {neuronal Schwann cell}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (nervoussystem) at (3,4) {nervous system}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (endopancell) at (3, -4) {endocrine pancreatic cell}; 	
+\backslash
+node [vert] (exopancell) at (-3, -4) {exocrine pancreatic cell}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (centroacinarcell) at (-5, -6) {centroacinar cell}; 	
+\backslash
+node [vert] (acinarcell) at (-1.8, -6) {acinar cell}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (alphacell) at (1, -6) {$
+\backslash
+alpha$ cell}; 	
+\backslash
+node [vert] (betacell) at (2.5, -6) {$
+\backslash
+beta$ cell}; 	
+\backslash
+node [vert] (sigmacell) at (4, -6) {$
+\backslash
+sigma$ cell}; 	
+\backslash
+node [vert] (ppcell) at (5.5, -6) {PP-cell}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (adultstemcell) at (-5, 4) {adult stem  cell}; 	
+\backslash
+node [vert] (embrystemcell) at (-1, 4) {embryonic stem  cell}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (pancreas) at (0,-12) {pancreas}; 	
+\backslash
+node [vert] (exopancreas) at (-3,-10) {exocrine pancreas}; 	
+\backslash
+node [vert] (endopancreas) at (3, -10) {endocrine pancreas}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (langerhans) at (3, -8) {islet of langerhans}; 	
+\backslash
+node [vert] (capillary) at (7, -8) {capillary}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (duct) at (-6, -10) {duct}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (exocell) -- (cell); 	
+\backslash
+path [isa] (endocell) -- (cell); 	
+\backslash
+path [isa] (pancell) -- (cell); 	
+\backslash
+path [isa] (stemcell) -- (cell); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (endopancell) -- (endocell); 	
+\backslash
+path [isa] (endopancell) -- (pancell); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (exopancell) -- (exocell); 	
+\backslash
+path [isa] (exopancell) -- (pancell); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (centroacinarcell) -- (exopancell); 	
+\backslash
+path [isa] (acinarcell) -- (exopancell); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (alphacell.north) -- (endopancell); 	
+\backslash
+path [isa] (betacell) -- (endopancell); 	
+\backslash
+path [isa] (sigmacell) -- (endopancell); 	
+\backslash
+path [isa] (ppcell.north) -- (endopancell); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (adultstemcell) -- (stemcell); 	
+\backslash
+path [isa] (embrystemcell) -- (stemcell); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (schwanncell) -- (cell); 	
+\backslash
+path [partof] (schwanncell) -- (nervoussystem); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [partof] (exopancreas) -- (pancreas); 	
+\backslash
+path [partof] (endopancreas) -- (pancreas); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [partof] (exopancell) -- (exopancreas); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [partof] (langerhans) -- (endopancreas); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [partof] (alphacell.south) -- (langerhans); 	
+\backslash
+path [partof] (betacell) -- (langerhans); 	
+\backslash
+path [partof] (sigmacell) -- (langerhans); 	
+\backslash
+path [partof] (ppcell.south) -- (langerhans); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [hasa] (langerhans) -- (capillary); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [hasa] (exopancreas) -- (duct);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

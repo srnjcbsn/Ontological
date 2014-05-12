@@ -60,7 +60,63 @@
 \begin_body
 
 \begin_layout Standard
+Two classes 
+\begin_inset Formula $P$
+\end_inset
 
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ are overlapping if they have a common subclass 
+\begin_inset Formula $R$
+\end_inset
+
+ such that 
+\begin_inset Formula $R\ isa\ P$
+\end_inset
+
+ and 
+\begin_inset Formula $R\ isa\ Q$
+\end_inset
+
+.
+ In the pancreas ontology, the classes 
+\emph on
+pancreatic cell
+\emph default
+ and 
+\emph on
+endocrine cell
+\emph default
+ overlap on the class 
+\emph on
+endocrine pancreatic cell.
+\end_layout
+
+\begin_layout Standard
+Two classes 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ are overlapping if Some 
+\begin_inset Formula $P$
+\end_inset
+
+ is Q and Some 
+\begin_inset Formula $Q$
+\end_inset
+
+ is 
+\begin_inset Formula $P$
+\end_inset
+
+ (in the pancreas onthology, some pancreatic cells are endocrine pancreatic
+ cells, which are also endocrine cells and vice versa).
 \end_layout
 
 \end_body
