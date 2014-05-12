@@ -57,12 +57,11 @@ ae_relation(secretes, alpha_cell, glucagon).
 ae_relation(secretes, beta_cell, insulin).
 ae_relation(secretes, delta_cell,  gastrin).
 ae_relation(secretes, delta_cell, somatostatin).
-ae_relation(secretes, pancreatic_polypeptide).
+ae_relation(secretes, pp_cell, pancreatic_polypeptide).
 
 
 % has_part relationships
-
-ae_relation(has_part,nervous_system,neuronal_schwann_cell).
+relation(has_part,nervous_system,neuronal_schwann_cell).
 ae_relation(has_part,pancreas,exocrine_pancreas).
 ae_relation(has_part,pancreas,endocrine_pancreas).
 
@@ -86,6 +85,7 @@ ae_relation(part_for,exocrine_pancreas,pancreas).
 ae_relation(part_for,endocrine_pancreas,pancreas).
 
 ae_relation(part_for,exocrine_pancreatic_cell,exocrine_pancreas).
+ae_relation(part_for,duct,exocrine_pancreas).
 
 ae_relation(part_for,islet_of_langerhans,endocrine_pancreas).
 

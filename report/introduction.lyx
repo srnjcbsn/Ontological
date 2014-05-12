@@ -65,6 +65,17 @@
 \begin_body
 
 \begin_layout Standard
+To formally describe the relations of an ontology in logic, there is two
+ different approaches either one based on an OWA (open world assumption)
+ or a CWA (closed world assumption), both of these are well studied and
+ have languages to accurately describe an ontology.
+ In this communication we will introduce classification logic based on OWA
+ and class relationship logic based on CWA, and how to use these languages
+ to express the ontology of the pancreas.
+ For the class relationship logic we will show how it can be expressed in
+ a modern programming language specifically swi-prolog.
+ Furthermore, we will show how to properly specify the logical relationships
+ in prolog to avoid the termination problem.
 \begin_inset Float figure
 wide false
 sideways false
