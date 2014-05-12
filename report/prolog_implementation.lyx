@@ -65,6 +65,38 @@ Our prolog program is designed for effective class relationship queries
  We have our program in two parts, first is the database which has all the
  raw data of the ontology written into it.
  The second part is definitions for the queries as defined by the CRL.
+ 
+\end_layout
+
+\begin_layout Standard
+According to CRL we have four different types of relationships 
+\begin_inset Formula $\forall\forall$
+\end_inset
+
+, 
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+, 
+\begin_inset Formula $\exists\forall$
+\end_inset
+
+ and 
+\begin_inset Formula $\exists\exists$
+\end_inset
+
+.
+ However for the pancreas ontology we will only use 
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+ as it is the only type of relation specified in the ontology.
+ In our prior analyze of the pancreas ontology we have determined that there
+ are five types of relations is_a, has_a, part_for, part_of and secretes.
+ Thus in order to have a complete database we have recorded all these relations,
+ except for part_of as it can be derived from the rule that a class A is
+ part_of B, if both B is part_for A and A has_a B.
+ 
 \end_layout
 
 \begin_layout Subsection*
