@@ -70,7 +70,7 @@ CRL and CRL-Meta
 
 \begin_layout Itemize
 CRL describes class membership while CRL-Meta describes relations between
- classes (??)
+ classes 
 \end_layout
 
 \begin_layout Itemize
@@ -96,6 +96,16 @@ CRL describes class membership while CRL-Meta describes relations between
  is the most relevant
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Explain is_a, has_part, part_for and part_of in terms of 
+\begin_inset Formula $Q'Q''$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 In CRL-Meta, 
 \family roman
@@ -141,21 +151,25 @@ CRL operates under the CWA.
 \begin_layout Itemize
 Inheritance rules:
 \begin_inset Formula 
-\[
-\frac{\forall\exists\left(C,R,D\right)\qquad isa\left(C',C\right)}{\forall\exists\left(C',R,D\right)}
-\]
+\begin{equation}
+\frac{\forall\exists\left(C,R,D\right)\qquad isa\left(C',C\right)}{\forall\exists\left(C',R,D\right)}\label{eq:inheritax1}
+\end{equation}
 
 \end_inset
 
 
 \begin_inset Formula 
-\[
-\frac{\forall\exists\left(C,R,D\right)\qquad isa\left(D,D'\right)}{\forall\exists\left(C,R,D'\right)}
-\]
+\begin{equation}
+\frac{\forall\exists\left(C,R,D\right)\qquad isa\left(D,D'\right)}{\forall\exists\left(C,R,D'\right)}\label{eq:inheritax2}
+\end{equation}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+disjointness, overlap
 \end_layout
 
 \end_deeper

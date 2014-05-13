@@ -154,6 +154,28 @@ X\text{ is }P
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
+\frac{\text{Every }P\text{ is }Q\qquad\text{Every }Q\text{ is }R}{\text{Every }P\text{ is }R}\tag{\ensuremath{\rho_{1}}}\label{eq:rho1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\text{Every }P\text{ is }Q\qquad\text{No }Q\text{ is }R}{\text{No }P\text{ is }R}\tag{\ensuremath{\rho_{2}}}\label{eq:rho2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
 \frac{\text{Some }P\text{ is }Q\qquad\text{Every }Q\text{ is }R}{\text{Some }P\text{ is }R}\tag{\ensuremath{\rho_{4}}}\label{eq:rho4}
 \end{equation}
 
@@ -265,6 +287,49 @@ reference "eq:rho5"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Given that we have stated 
+\begin_inset Quotes eld
+\end_inset
+
+Every 
+\emph on
+embryonic stem cell 
+\emph default
+is 
+\emph on
+stem cell
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, we can also infer 
+\begin_inset Quotes eld
+\end_inset
+
+Every 
+\emph on
+embryonic stem cell
+\emph default
+ is 
+\emph on
+cell
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ using 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho1"
+
+\end_inset
+
+, thus supporting the transitive nature of class inclusion.
 \end_layout
 
 \begin_layout Standard
@@ -516,44 +581,125 @@ No
 \begin_inset Quotes erd
 \end_inset
 
- scheme on all disjoint classes.
- 
-\end_layout
+ scheme on disjoint classes.
+ For two disjoint subclass graphs, it is sufficient to state that the two
+ root classes (the classes which do not have an 
+\begin_inset Formula $isa$
+\end_inset
 
-\begin_layout Itemize
-Explain what classification logic is
-\end_layout
-
-\begin_layout Itemize
-Explain how to describe pancreas example taxonomy
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Explain how to deal with denials
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Talk about open world assumption
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Itemize
-Explain how to handle overlapping classes (diamond problem) with 
+ relation to other classes in their respective subgraph) are disjoint with
+ respect to each other, as the disjointness of the other classes can be
+ inferred from there.
+ In the pancreas ontology, we would state that 
 \begin_inset Quotes eld
 \end_inset
 
-Some-is
+No 
+\emph on
+exocrine cell
+\emph default
+ is 
+\emph on
+endocrine cell
+\emph default
+
 \begin_inset Quotes erd
 \end_inset
 
+ and 
+\begin_inset Quotes eld
+\end_inset
 
+No 
+\emph on
+endocrine cell 
+\emph default
+is 
+\emph on
+exocrine cell
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, which would allow us to apply 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho2"
+
+\end_inset
+
+ in tandem with 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:rho1"
+
+\end_inset
+
+ to infer that all subclasses of 
+\emph on
+exocrine cell
+\emph default
+ are disjoint with all subclasses of 
+\emph on
+endocrine cell 
+\emph default
+and vice versa.
 \end_layout
 
-\begin_layout Itemize
-Talk about how you can handle empty sets
+\begin_layout Standard
+As classification logic is concerned solely with taxonomic relations (ie.
+ 
+\emph on
+isa
+\emph default
+), we can not readily utilize it to describe partonomies.
+ We could use classification on a meta level with classes ranging over partially
+ applied partonomic relations and state sentences such as 
+\begin_inset Quotes eld
+\end_inset
+
+Every 
+\emph on
+exocrine pancreas
+\emph default
+ is 
+\emph on
+has part duct
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, where 
+\emph on
+has part duct
+\emph default
+ is the class of objects which has the 
+\emph on
+haspart
+\emph default
+ relationship with 
+\emph on
+duct
+\emph default
+s.
+ A problem with this approach is that 
+\emph on
+has part duct
+\emph default
+ has no explicit relation to the class 
+\emph on
+duct
+\emph default
+; as such, we must be able to decode the meaning of 
+\emph on
+has part duct
+\emph default
+ manually.
+ Additionally, it would lead to considerable pollution of the ontological
+ description, thereby increasing the amount of information required to derive
+ partonomic relationships.
 \end_layout
 
 \end_body
