@@ -102,7 +102,7 @@ According to CRL we have four different types of relationships
  
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection*
 Recording in the database
 \end_layout
 
@@ -158,7 +158,15 @@ relation_ae(R, A, B)
 
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Standard
+the name relation_ae refer to it being a 
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+- relation.
+\end_layout
+
+\begin_layout Subsubsection*
 Querying the relations
 \end_layout
 
@@ -175,12 +183,20 @@ status open
 \begin_layout Plain Layout
 \align center
 
-:- query(R, A, B)
+:- ae(R, A, B)
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+the refers to it being 
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+ relation query.
 \end_layout
 
 \begin_layout Description
@@ -198,23 +214,528 @@ A,
 B is the two classes which the user want to check whether the given relation
  holds true, the full query should be read as A R B, for instance pp_cell
  is_a cell.
- 
 \end_layout
 
-\begin_layout Itemize
-Explain usage
+\begin_layout Standard
+To define an 
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+ query we set it up as three indivual rules the first is the identity rule
+ of is_a the next is the transitivity rule and the last is the rule to define
+ part_of.
+ Identity rule is triviel as it is defined as 
 \end_layout
 
-\begin_layout Itemize
-Explain features
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ae(is_a, A, A).
 \end_layout
 
-\begin_layout Itemize
-How did we use principles of CRL in prolog
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-How to deal with termination problems
+\begin_layout Standard
+aswell as the part_of rule as it is defined as
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ae(part_of, A, B):- ae(has_a,B,A), ae(part_for,A,B)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The interesting of these is how to define transitivity as there are inheritance
+ axioms for is_a to consider as presented in (REF CRL META LOGIC PAPER).
+ Which we stated at 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:inheritax1"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:inheritax2"
+
+\end_inset
+
+.
+ As such the two first rules of transitivity are well known
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+transitivity(R, A, B):-relation_ae(R, A,B).
+\end_layout
+
+\begin_layout Plain Layout
+
+transitivity(R, A, C):-
+\end_layout
+
+\begin_layout Plain Layout
+
+	relation_ae(R, A, B), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	transitivity(R, B, C).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our definition of transitivity is not exactly the same as the crl version
+ stated at 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:transitivity_crl"
+
+\end_inset
+
+, this being because while that version is theoretically correct it does
+ not deal with its inherent termination problem.
+ The version which we have defined accomplishes the exact same rule but
+ requires data to be present for it pursue the recursion path.
+ If we chose to define it as the crl version it would look like this
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+transitivity(R, A, B):-relation_ae(R, A,B).
+\end_layout
+
+\begin_layout Plain Layout
+
+transitivity(R, A, C):-
+\end_layout
+
+\begin_layout Plain Layout
+
+	transitivity(R, A, B), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	transitivity(R, B, C).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However as prolog does a DFS(depth-first search) it would match on the first
+ transitivity predicate at the recursion rule, and given that the B variable
+ is free, this would cause the next recursion to also contain a free variable
+ thus this will cause an infinite loop.
+\end_layout
+
+\begin_layout Standard
+Next in the transitivity rules we need to define a rule to accomondate class
+ inheritance, as such the inheritance axioms incorporation are defined as
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+transitivity(R,A,C):-
+\end_layout
+
+\begin_layout Plain Layout
+
+	R 
+\backslash
+= is_a,
+\end_layout
+
+\begin_layout Plain Layout
+
+	ae_relation(is_a,A,B),
+\end_layout
+
+\begin_layout Plain Layout
+
+	transitivity(R,B,C).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where if you replace A with C', C with D and B with C, you will get the
+ exact same as defined in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "BROKEN: Format: eq:inheritax1"
+
+\end_inset
+
+.
+ Furthermore notice that as we do not recognize is_a as first class citizens
+ we must include a negation as failure on is_a to avoid a double answer.
+ The same done for 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "BROKEN: Format: eq:inheritax2"
+
+\end_inset
+
+, which is triviel once you understand the first.
+\end_layout
+
+\begin_layout Standard
+A last thing to notice is that to avoid duplicates of the same answer we
+ have chosen to wrap our ae predicate in a 
+\family typewriter
+setof
+\family default
+ which filters the answer, however this has no theoretical value it is purely
+ for convenience.
+\end_layout
+
+\begin_layout Subsubsection*
+Overlap and Disjoint
+\end_layout
+
+\begin_layout Standard
+To use check for overlap use the following predicate
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+:- overlap(A, B, X)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+A,
+\begin_inset space ~
+\end_inset
+
+B are the classes which we wish to determine if they overlap.
+\end_layout
+
+\begin_layout Description
+X is the class which causes the A and B classes to overlap, which is interesting
+ to know about when determining overlaps.
+ However this can be set as 
+\begin_inset Quotes eld
+\end_inset
+
+don't care
+\begin_inset Quotes erd
+\end_inset
+
+ if it is not wanted.
+\end_layout
+
+\begin_layout Standard
+Overlap follow the 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:overlap_crl"
+
+\end_inset
+
+ as we stated earlier, which is that there exists a class X which is the
+ desendant of both A and B, thus we define overlap only consist of the rule
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+common_desendant(X, A, B)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and we define a common desendant by X having both A and B as an ancestor
+ ei.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ancestor(X, A), ancestor(X, B)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+combined this will find all overlaps according to 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:overlap_crl"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+An interesting property of the definition is that it will conclude that
+ two classes which are lineally related also overlap, ei.
+ classes where either of them is the ancestor of the other.
+ While this is clearly a definition question it might not be relavant to
+ the user that two classes are lineally related, to accommondate this need
+ we have another predicate
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+:- overlap_lineally_unrelated(A, B, X)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which has same input scheme as the overlap predicate.
+ The definition of this predicate is merely an extension to the overlap
+ definition adding two extra rules.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
++ ancestor(A, B), 
+\backslash
++ ancestor(B, A).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which ensures that the rule will fail when A and B are lineally related.
+\end_layout
+
+\begin_layout Standard
+To check if two classes are disjoint, ei.
+ not overlapping, use the predicate
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+:- disjoint(C, D)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+C,
+\begin_inset space ~
+\end_inset
+
+D are the two classes which are checked if they are disjoint.
+\end_layout
+
+\begin_layout Standard
+Our disjoint follows the definition stated on 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:disjoint_crl"
+
+\end_inset
+
+, which is
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
++ overlap(C, D, _)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which means that two classes are disjoint if they are not overlapping.
+ Furthermore in our program definition of disjoint we also have that two
+ predicates
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+class(C), class(D)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+the reason being that we need to lock the variables C and D for the negation
+ as failure definition to work given open variables on the input to disjoint.
+\end_layout
+
+\begin_layout Subsubsection*
+Error checking
+\end_layout
+
+\begin_layout Standard
+When recording data into the database input errors can occur easily which
+ will cause properties of the relations to no longer hold.
+ Thus it is convient for a user to be able to check the database in real
+ time.
+ To do this we have defined the predicate
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+:- error(O)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+O is the output of the error, which is a tuple of different length depending
+ on the error.
+\end_layout
+
+\begin_layout Standard
+There are three different types of errors that can occur in our database
+\end_layout
+
+\begin_layout Description
+class_missing is when a class has a relation with another class but is not
+ defined in our class table.
+\end_layout
+
+\begin_layout Description
+reflexive is when a relation is found to be reflexive as the property of
+ all our relations is that they are irreflexive, this error will ignore
+ the is_a relation as that relation in constrast to the others actually
+ is reflexive.
+\end_layout
+
+\begin_layout Description
+Symmetric_with is when a class has a symmetric relation with another class,
+ using the definition of symmetri from 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:symmetric_crl"
+
+\end_inset
+
+.
+ The output will the two classes which causes the symmetri and with which
+ relation.
 \end_layout
 
 \end_body
