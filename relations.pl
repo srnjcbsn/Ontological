@@ -9,10 +9,9 @@ ae_relation(is_a, b, c).
 ae_relation(is_a, c, a).
 
 transitivity(R,A,B):-ae_relation(R,A,B).
+transitivity(R,A,C):-ae_relation(R,A,B),transitivity(R,B,C).
 transitivity(R,A,C):-R \= is_a,ae_relation(is_a,B,C),transitivity(R,A,B).
 transitivity(R,A,C):-R \= is_a,ae_relation(is_a,A,B),transitivity(R,B,C).
-transitivity(R,A,C):-ae_relation(R,A,B),transitivity(R,B,C).
-
 
 ae_redundant(R, A, B) :- transitivity(R,A,B).
 ae_redundant(part_of, A, B) :- 
@@ -32,9 +31,9 @@ error((symmetric, R ,A,B)):-class(A), class(B), is_symmetric(R, A, B).
 
 ancestor(P, Q):-ae(is_a, P, Q).
 
-common_desendant(C, A, B) :- 
-	ancestor(C, A), 
-	ancestor(C, B).
+common_desendant(X, A, B) :- 
+	ancestor(X, A), 
+	ancestor(X, B).
 
 	
 overlap(A, B, X):-
