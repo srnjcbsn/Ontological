@@ -195,6 +195,10 @@ X\text{ is }P
 
 \end_layout
 
+\begin_layout Subsection
+Pancreas ontology in classification logic
+\end_layout
+
 \begin_layout Standard
 In classification logic, we can descibe class inclusion with the 
 \begin_inset Quotes eld
@@ -647,6 +651,10 @@ endocrine cell
 and vice versa.
 \end_layout
 
+\begin_layout Subsubsection
+Partonomic relations
+\end_layout
+
 \begin_layout Standard
 As classification logic is concerned solely with taxonomic relations (ie.
  
@@ -700,6 +708,7 @@ has part duct
  Additionally, it would lead to considerable pollution of the ontological
  description, thereby increasing the amount of information required to derive
  partonomic relationships.
+ 
 \end_layout
 
 \end_body

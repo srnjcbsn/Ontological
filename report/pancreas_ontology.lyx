@@ -3,6 +3,10 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,shapes,topaths}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -25,6 +29,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -59,61 +64,699 @@
 
 \begin_body
 
-\begin_layout Itemize
+\begin_layout Standard
+In this section we will present a biomedical ontology concerning the anatomy
+ of the pancreas.
+ We will base the ontology on the definitions presented in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rosse2004a"
 
+\end_inset
+
+, which are introduced below.
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rosse2004a"
+
+\end_inset
+
+, the two fundamental relations 
 \family typewriter
 \emph on
 inst
+\begin_inset Formula $\left(x,A\right)$
+\end_inset
+
+
 \family default
 \emph default
-, 
+ and 
 \family typewriter
 \emph on
 part
+\family default
+\emph default
+
+\begin_inset Formula $\left(x,y\right)$
+\end_inset
+
+ are introduced as predicates in first order logic.
+ The first denotes that the individual 
+\begin_inset Formula $x$
+\end_inset
+
+ is an instance of the class 
+\begin_inset Formula $A$
+\end_inset
+
+ while the second denotes that the individual 
+\begin_inset Formula $x$
+\end_inset
+
+ is part of the individual 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ 
+\family typewriter
+\emph on
+[properties of part and inst (transitivity, reflexivity, ...)]
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+Using the instantiation and parthood relations introduced above, the following
+ class relations are defined:
+\end_layout
 
-\emph on
-A is_a B
-\emph default
-: 
-\begin_inset Formula $\forall x\left[\text{\emph{\texttt{inst}}}\left(x,A\right)\rightarrow\text{\emph{\texttt{inst}}}\left(x,B\right)\right]$
+\begin_layout Standard
+\begin_inset Formula 
+\begin{alignat*}{1}
+A\ is\_a\ B & \triangleq\forall x\left[\text{\emph{\texttt{inst}}}\left(x,A\right)\rightarrow\text{\emph{\texttt{inst}}}\left(x,B\right)\right]\\
+A\ part\_for\ B & \triangleq\forall x\left[\text{\emph{\texttt{inst}}}\left(x,A\right)\rightarrow\exists y\left[\text{\emph{\texttt{inst}}}\left(y,B\right)\land\text{\emph{\texttt{part}}}\left(x,y\right)\right]\right]\\
+B\ has\_part\ A & \triangleq\forall y\left[\text{\emph{\texttt{inst}}}\left(y,B\right)\rightarrow\exists x\left[\text{\emph{\texttt{inst}}}\left(x,A\right)\land\text{\emph{\texttt{part}}}\left(x,y\right)\right]\right]\\
+A\ part\_of\ B & \triangleq A\ part\_for\ B\land B\ has\_part\ A
+\end{alignat*}
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+where each of the predicates 
+\emph on
+
+\begin_inset Formula $r\in\{$
+\end_inset
+
+is_a
+\emph default
+, 
+\emph on
+part_for
+\emph default
+, 
+\emph on
+has_part
+\emph default
+, 
+\emph on
+part_of
+\begin_inset Formula $\}$
+\end_inset
+
+
+\emph default
+ are binary predicates of the form 
+\begin_inset Formula $r\left(A,B\right)$
+\end_inset
+
+, represented as 
+\emph on
+A r B
+\emph default
+.
+ The intuitive meanings of the four relations are as follows:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \emph on
-A part_for
+A
+\begin_inset space \space{}
+\end_inset
+
+is_a
+\begin_inset space \space{}
+\end_inset
+
+B:
 \emph default
- 
+ denotes class inclusion, as it says that all instances of 
+\emph on
+A 
+\emph default
+are also instances of 
 \emph on
 B
 \emph default
-: 
-\begin_inset Formula $\forall x\left[\text{\emph{\texttt{inst}}}\left(x,A\right)\rightarrow\exists y\left[\text{\emph{\texttt{inst}}}\left(y,B\right)\land\text{\emph{\texttt{part}}}\left(x,y\right)\right]\right]$
-\end_inset
-
-
+.
+ 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \emph on
-B has_part A
+A
+\begin_inset space \space{}
+\end_inset
+
+part_for
+\begin_inset space \space{}
+\end_inset
+
+B:
 \emph default
-: 
-\begin_inset Formula $\forall y\left[\text{\emph{\texttt{inst}}}\left(y,B\right)\rightarrow\exists x\left[\text{\emph{\texttt{inst}}}\left(y,B\right)\land\text{\emph{\texttt{part}}}\left(x,y\right)\right]\right]$
+ no instance of 
+\emph on
+A
+\emph default
+ can exist without being a part of an instance of 
+\emph on
+B
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+A
+\begin_inset space \space{}
+\end_inset
+
+has_part
+\begin_inset space \space{}
+\end_inset
+
+B:
+\emph default
+ for every instance 
+\begin_inset Formula $y$
+\end_inset
+
+ of 
+\emph on
+B
+\emph default
+, there is an instance of 
+\emph on
+A 
+\emph default
+which is a part of 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+A
+\begin_inset space \space{}
+\end_inset
+
+part_of
+\begin_inset space \space{}
+\end_inset
+
+B:
+\emph default
+ all instances of 
+\emph on
+A
+\emph default
+ are parts of instances of 
+\emph on
+B
+\emph default
+, and all instances of 
+\emph on
+B 
+\emph default
+has an instance of 
+\emph on
+A
+\emph default
+ as a part
+\end_layout
+
+\begin_layout Subsection
+The pancreas ontology
+\end_layout
+
+\begin_layout Standard
+With these fundamentals in place, we present an application of this biomedical
+ ontology on the domain of the pancreas.
+ In 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:pancreas_ontology"
+
+\end_inset
+
+, a selection of parts of the pancreas and the relations between them have
+ been visualized.
+ Nodes in the graph represent classes in the ontology.
+ An arrow pointing from a class 
+\emph on
+A 
+\emph default
+to another class 
+\emph on
+B
+\emph default
+ denotes the relation 
+\emph on
+A r B
+\emph default
+, where
+\emph on
+ r 
+\emph default
+depends on the arrow type; 
+\begin_inset Formula $r=is\_a$
+\end_inset
+
+ if the arrow has a solid line, 
+\begin_inset Formula $r=has\_part$
+\end_inset
+
+ if the line is dashed, and 
+\begin_inset Formula $r=part\_of$
+\end_inset
+
+ in case of a double line.
+ All 
+\emph on
+A part_for B
+\emph default
+ relations in this ontology have a corresponding 
+\emph on
+B part_of A
+\emph default
+ relation, which is why no 
+\emph on
+part_for
+\emph default
+ relations are shown explicitly, but only implicitly as constituents of
+ 
+\emph on
+part_of 
+\emph default
+relations.
+\end_layout
+
+\begin_layout Standard
+In addition to the four relations presented in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rosse2004a"
+
+\end_inset
+
+, we also introduce the binary relation 
+\emph on
+secretes
+\emph default
+.
+ Although this is not shown in the figure, we have the following relations:
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\emph on
+ cell
+\emph default
+ 
+\emph on
+secretes glucagon
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\beta$
+\end_inset
+
+ 
+\emph on
+cell secretes insulin
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\delta$
+\end_inset
+
+ 
+\emph on
+cell secretes gastrin
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\delta$
+\end_inset
+
+ 
+\emph on
+cell secretes somatostatin
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+PP-cell secretes pancreatic polypeptide
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture} 	[ node distance=3cm 	, vert/.style={rectangle,thick,
+ rounded corners=10pt, minimum size=30pt, draw} 	, isa/.style={->, >=stealth',
+ draw} 	, hasa/.style={->, >=stealth', dashed, draw} 	, partof/.style={->,
+ >=stealth', double, draw} 	, text height=1.5ex, text depth=.25ex 	] 	
+\backslash
+node [vert] (cell) at (0,0) {cell}; 	
+\backslash
+node [vert] (exocell) at (-3, -2) {exocrine cell}; 	
+\backslash
+node [vert] (endocell) at (3,-2) {endocrine cell}; 	
+\backslash
+node [vert] (pancell) at (0, -2) {pancreatic cell}; 	
+\backslash
+node [vert] (stemcell) at (-3, 2) {stem cell}; 	
+\backslash
+node [vert] (schwanncell) at (3,2) {neuronal Schwann cell}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (nervoussystem) at (3,4) {nervous system}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (endopancell) at (3, -4) {endocrine pancreatic cell}; 	
+\backslash
+node [vert] (exopancell) at (-3, -4) {exocrine pancreatic cell}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (centroacinarcell) at (-5, -6) {centroacinar cell}; 	
+\backslash
+node [vert] (acinarcell) at (-1.8, -6) {acinar cell}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (alphacell) at (1, -6) {$
+\backslash
+alpha$ cell}; 	
+\backslash
+node [vert] (betacell) at (2.5, -6) {$
+\backslash
+beta$ cell}; 	
+\backslash
+node [vert] (sigmacell) at (4, -6) {$
+\backslash
+sigma$ cell}; 	
+\backslash
+node [vert] (ppcell) at (5.5, -6) {PP-cell}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (adultstemcell) at (-5, 4) {adult stem  cell}; 	
+\backslash
+node [vert] (embrystemcell) at (-1, 4) {embryonic stem  cell}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (pancreas) at (0,-12) {pancreas}; 	
+\backslash
+node [vert] (exopancreas) at (-3,-10) {exocrine pancreas}; 	
+\backslash
+node [vert] (endopancreas) at (3, -10) {endocrine pancreas}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (langerhans) at (3, -8) {islet of langerhans}; 	
+\backslash
+node [vert] (capillary) at (7, -8) {capillary}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node [vert] (duct) at (-6, -10) {duct}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (exocell) -- (cell); 	
+\backslash
+path [isa] (endocell) -- (cell); 	
+\backslash
+path [isa] (pancell) -- (cell); 	
+\backslash
+path [isa] (stemcell) -- (cell); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (endopancell) -- (endocell); 	
+\backslash
+path [isa] (endopancell) -- (pancell); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (exopancell) -- (exocell); 	
+\backslash
+path [isa] (exopancell) -- (pancell); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (centroacinarcell) -- (exopancell); 	
+\backslash
+path [isa] (acinarcell) -- (exopancell); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (alphacell.north) -- (endopancell); 	
+\backslash
+path [isa] (betacell) -- (endopancell); 	
+\backslash
+path [isa] (sigmacell) -- (endopancell); 	
+\backslash
+path [isa] (ppcell.north) -- (endopancell); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (adultstemcell) -- (stemcell); 	
+\backslash
+path [isa] (embrystemcell) -- (stemcell); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [isa] (schwanncell) -- (cell); 	
+\backslash
+path [partof] (schwanncell) -- (nervoussystem); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [partof] (exopancreas) -- (pancreas); 	
+\backslash
+path [partof] (endopancreas) -- (pancreas); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [partof] (exopancell) -- (exopancreas); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [partof] (langerhans) -- (endopancreas); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [partof] (alphacell.south) -- (langerhans); 	
+\backslash
+path [partof] (betacell) -- (langerhans); 	
+\backslash
+path [partof] (sigmacell) -- (langerhans); 	
+\backslash
+path [partof] (ppcell.south) -- (langerhans); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [hasa] (langerhans) -- (capillary); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+path [hasa] (exopancreas) -- (duct);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+A visualization of the taxonomic and partonomic relations between different
+ parts of the pancreas.
+ Solid lines are 
+\emph on
+is_a
+\emph default
+ relations, dashed lines are 
+\emph on
+has_part
+\emph default
+ relations, and double lines are 
+\emph on
+part_of
+\emph default
+ relations.
+ 
+\emph on
+secretes
+\emph default
+ relations are not shown.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pancreas_ontology"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-overlapping and disjoint classes
+overlapping classes, disjointness
 \end_layout
 
 \begin_layout Standard
@@ -149,31 +792,6 @@ endocrine cell
  overlap on the class 
 \emph on
 endocrine pancreatic cell.
-\end_layout
-
-\begin_layout Standard
-Two classes 
-\begin_inset Formula $P$
-\end_inset
-
- and 
-\begin_inset Formula $Q$
-\end_inset
-
- are overlapping if Some 
-\begin_inset Formula $P$
-\end_inset
-
- is Q and Some 
-\begin_inset Formula $Q$
-\end_inset
-
- is 
-\begin_inset Formula $P$
-\end_inset
-
- (in the pancreas onthology, some pancreatic cells are endocrine pancreatic
- cells, which are also endocrine cells and vice versa).
 \end_layout
 
 \end_body

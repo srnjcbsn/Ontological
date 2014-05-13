@@ -64,6 +64,14 @@
 
 \begin_body
 
+\begin_layout Title
+Ontological Systems
+\end_layout
+
+\begin_layout Author
+Søren Jacobsen (s091858) & Jannick Boese Johnsen (s092920)
+\end_layout
+
 \begin_layout Abstract
 \begin_inset CommandInset include
 LatexCommand input
@@ -89,7 +97,14 @@ filename "introduction.lyx"
 \end_layout
 
 \begin_layout Section
-The pancreas ontology
+The ontological framework
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-pancreas-ontology"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -104,6 +119,13 @@ filename "pancreas_ontology.lyx"
 
 \begin_layout Section
 Classification logic
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Classification-logic"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -118,6 +140,13 @@ filename "classification_logic.lyx"
 
 \begin_layout Section
 Class relationship logic
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Class-relationship-logic"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -173,6 +202,34 @@ appendix
 
 \begin_layout Section
 Program listing
+\end_layout
+
+\begin_layout Subsection
+relations.pl
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/srnjcbsn/Ontological/relations.pl"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+relationsdb.pl
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "/Users/srnjcbsn/Ontological/relationsdb.pl"
+
+\end_inset
+
+
 \end_layout
 
 \end_body

@@ -170,6 +170,22 @@ Inheritance rules:
 
 \begin_layout Itemize
 disjointness, overlap
+\begin_inset Formula 
+\begin{equation}
+overlap\left(C,D\right)\leftarrow isa\left(X,C\right)\land isa\left(X,D\right)\label{eq:overlap_crl}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+disjoint\left(C,D\right)\leftarrow\nvdash overlap\left(C,D\right)\label{eq:disjoint_crl}
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
