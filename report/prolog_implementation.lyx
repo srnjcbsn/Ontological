@@ -62,10 +62,12 @@
 \begin_layout Standard
 Our prolog program is designed for effective class relationship queries
  in the pancreas ontology.
- We have our program in two parts, first is the database which has all the
- raw data of the ontology written into it.
- The second part is definitions for the queries as defined by the CRL.
  
+\end_layout
+
+\begin_layout Standard
+The program consists of the definitions to query for relationship information
+ as defined by the CRL and all the raw data of the pancreas ontology.
 \end_layout
 
 \begin_layout Standard
@@ -95,17 +97,65 @@ According to CRL we have four different types of relationships
  are five types of relations is_a, has_a, part_for, part_of and secretes.
  Thus in order to have a complete database we have recorded all these relations,
  except for part_of as it can be derived from the rule that a class A is
- part_of B, if both B is part_for A and A has_a B.
+ part_of B, if both B is part_for A and A has_a B as defined in (REF TO
+ SMITH AND RUSSEL).
  
 \end_layout
 
-\begin_layout Subsection*
-Usage
+\begin_layout Paragraph*
+Recording in the database
 \end_layout
 
 \begin_layout Standard
-To use the program we have defined a set of different predicates which the
- user can utilize.
+As data must be defined in CRL-Meta, the classes are defined as constants
+ aswell as the relations, including class inclusion as it is only a special
+ case of a relation.
+ Furthermore, we require that all classes are recorded as we do not want
+ class conception to come from its relations, while this among other things
+ is good practice, as hinging a class's existances on its relations is not
+ recommended, there is also inherent value in having the ability to efficiently
+ query all classes of the KB.
+ 
+\end_layout
+
+\begin_layout Standard
+To define a class the user inserts: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+class(A)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where A is the class he wants to be part of the database such as cell, pp_cell,..
+ ect.
+\end_layout
+
+\begin_layout Standard
+To define a relation between two classes the user inserts:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+relation_ae(R, A, B)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph*
