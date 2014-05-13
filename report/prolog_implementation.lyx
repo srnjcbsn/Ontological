@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -97,8 +98,14 @@ According to CRL we have four different types of relationships
  are five types of relations is_a, has_a, part_for, part_of and secretes.
  Thus in order to have a complete database we have recorded all these relations,
  except for part_of as it can be derived from the rule that a class A is
- part_of B, if both B is part_for A and A has_a B as defined in (REF TO
- SMITH AND RUSSEL).
+ part_of B, if both B is part_for A and A has_a B as defined in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rosse2004a"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -263,7 +270,14 @@ ae(part_of, A, B):- ae(has_a,B,A), ae(part_for,A,B)
 
 \begin_layout Standard
 The interesting of these is how to define transitivity as there are inheritance
- axioms for is_a to consider as presented in (REF CRL META LOGIC PAPER).
+ axioms for is_a to consider as presented in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nilsson2011a"
+
+\end_inset
+
+.
  Which we stated at 
 \begin_inset CommandInset ref
 LatexCommand formatted
