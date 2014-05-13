@@ -251,22 +251,14 @@ has_part
 
 B:
 \emph default
- for every instance 
-\begin_inset Formula $y$
-\end_inset
-
- of 
+ every instance of 
 \emph on
 B
 \emph default
-, there is an instance of 
+ has a part that is an instance of 
 \emph on
-A 
+A
 \emph default
-which is a part of 
-\begin_inset Formula $y$
-\end_inset
-
 .
  
 \end_layout
@@ -285,15 +277,15 @@ part_of
 
 B:
 \emph default
- all instances of 
+ every instance of 
 \emph on
 A
 \emph default
- are parts of instances of 
+ is a part of an instance of 
 \emph on
 B
 \emph default
-, and all instances of 
+, and every instance of 
 \emph on
 B 
 \emph default
@@ -383,7 +375,7 @@ key "rosse2004a"
 secretes
 \emph default
 .
- Although this is not shown in the figure, we have the following relations:
+ Although this is not shown in the figure, we also have the following relations:
  
 \begin_inset Quotes eld
 \end_inset
@@ -755,8 +747,8 @@ name "fig:pancreas_ontology"
 
 \end_layout
 
-\begin_layout Itemize
-overlapping classes, disjointness
+\begin_layout Subsubsection*
+Overlapping classes and disjointness
 \end_layout
 
 \begin_layout Standard
@@ -773,11 +765,11 @@ Two classes
 \end_inset
 
  such that 
-\begin_inset Formula $R\ isa\ P$
+\begin_inset Formula $R\ is\_a\ P$
 \end_inset
 
  and 
-\begin_inset Formula $R\ isa\ Q$
+\begin_inset Formula $R\ is\_a\ Q$
 \end_inset
 
 .
@@ -791,7 +783,12 @@ endocrine cell
 \emph default
  overlap on the class 
 \emph on
-endocrine pancreatic cell.
+endocrine pancreatic cell
+\emph default
+.
+ For disjointness the opposite is true, that is two classes are disjoint
+ if they do not have any overlapping classes, ie.
+ there no classes which are a desendant of both P and Q.
 \end_layout
 
 \end_body

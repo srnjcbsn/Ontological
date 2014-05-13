@@ -60,7 +60,13 @@
 \begin_body
 
 \begin_layout Standard
-
+Representing ontologies logically has some inherent problems depending on
+ how the problem is approched.
+ In this we articulate a short and descriptive walkthrough of classification
+ and class relationship logic's approach to defining relationships between
+ classes logically.
+ As well as showing how to implement a pancreas ontology in the modern logic
+ programming language prolog.
 \end_layout
 
 \end_body

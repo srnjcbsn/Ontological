@@ -64,6 +64,19 @@
 \begin_body
 
 \begin_layout Standard
+Classification logic is one of the older logics, it dates back to the greeks
+ under the name syllogistic logic.
+ It structures logic as sentences, where classes are words and phrases in
+ the sentence.
+ For instance we can have a sentence Every beta_cell is cell, thus stating
+ that Every instance of a class beta_cell is an instance of a class cell.
+\end_layout
+
+\begin_layout Standard
+The different sentences in classification logic is defined as.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
 \text{Every }P\text{ is }Q
@@ -108,6 +121,10 @@ X\text{ is }P
 \end_layout
 
 \begin_layout Standard
+With their semantical meaning interpretated as.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
 \left[\!\left[\text{Every }P\text{ is }Q\right]\!\right]_{I}\triangleq\left[\!\left[P\right]\!\right]_{I}\subseteq\left[\!\left[Q\right]\!\right]_{I}
@@ -149,6 +166,11 @@ X\text{ is }P
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+With this inpretation we then present the following set of incomplete inference
+ rules for classification logic
 \end_layout
 
 \begin_layout Standard
@@ -219,7 +241,7 @@ Every
  scheme.
  For example --- in the pancreas ontology --- we can encode the relation
  
-\begin_inset Formula $stem\ cell\ isa\ cell$
+\begin_inset Formula $stem\_cell\ is\_a\ cell$
 \end_inset
 
  as 
@@ -227,7 +249,7 @@ Every
 \end_inset
 
 Every 
-\begin_inset Formula $stem\ cell$
+\begin_inset Formula $stem\_cell$
 \end_inset
 
  is 
@@ -252,7 +274,7 @@ Every
 \end_inset
 
  is 
-\begin_inset Formula $stem\ cell$
+\begin_inset Formula $stem\_cell$
 \end_inset
 
 
@@ -285,7 +307,7 @@ reference "eq:rho5"
 : 
 \begin_inset Formula 
 \[
-\frac{a\ \text{is}\ stem\ cell\qquad\text{Every }stem\ cell\text{ is }cell}{a\text{ is }cell}
+\frac{a\ \text{is}\ stem\_cell\qquad\text{Every }stem\_cell\text{ is }cell}{a\text{ is }cell}
 \]
 
 \end_inset
@@ -300,11 +322,11 @@ Given that we have stated
 
 Every 
 \emph on
-embryonic stem cell 
+embryonic_stem_cell 
 \emph default
 is 
 \emph on
-stem cell
+stem_cell
 \emph default
 
 \begin_inset Quotes erd
@@ -316,7 +338,7 @@ stem cell
 
 Every 
 \emph on
-embryonic stem cell
+embryonic_stem_cell
 \emph default
  is 
 \emph on
@@ -343,11 +365,11 @@ In the pancreas ontology, we would introduce the relations
 
 Every 
 \emph on
-endocrine pancreatic cell
+endocrine_pancreatic_cell
 \emph default
  is 
 \emph on
-pancreatic cell
+pancreatic_cell
 \emph default
 
 \begin_inset Quotes erd
@@ -359,11 +381,11 @@ pancreatic cell
 
 Every 
 \emph on
-endocrine pancreatic cell
+endocrine_pancreatic_cell
 \emph default
  is 
 \emph on
-endocrine cell
+endocrine_cell
 \emph default
 
 \begin_inset Quotes erd
@@ -372,11 +394,11 @@ endocrine cell
 .
  To describe that the classes 
 \emph on
-endocrine cell
+endocrine_cell
 \emph default
  and 
 \emph on
-pancreatic cell
+pancreatic_cell
 \emph default
  overlap, we need to be able to infer 
 \begin_inset Quotes eld
@@ -384,11 +406,11 @@ pancreatic cell
 
 Some 
 \emph on
-endocrine cell
+endocrine_cell
 \emph default
  is 
 \emph on
-pancreatic cell
+pancreatic_cell
 \emph default
 
 \begin_inset Quotes erd
@@ -408,11 +430,11 @@ reference "eq:rho6"
 
 Some 
 \emph on
-pancreatic cell 
+pancreatic_cell 
 \emph default
 is 
 \emph on
-endocrine pancreatic cell
+endocrine_pancreatic_cell
 \emph default
 
 \begin_inset Quotes erd
@@ -424,11 +446,11 @@ endocrine pancreatic cell
 
 Some 
 \emph on
-endocrine cell
+endocrine_cell
 \emph default
  is 
 \emph on
-endocrine pancreatic cell
+endocrine_pancreatic_cell
 \emph default
 
 \begin_inset Quotes erd
@@ -459,11 +481,11 @@ Some
 
  relations between 
 \emph on
-pancreatic cell 
+pancreatic_cell 
 \emph default
 and 
 \emph on
-endocrine cell
+endocrine_cell
 \emph default
 .
 \end_layout
@@ -553,11 +575,11 @@ Some
 
 Some 
 \emph on
-pancreatic cell
+pancreatic_cell
 \emph default
  is 
 \emph on
-endocrine pancreatic cell
+endocrine_pancreatic_cell
 \emph default
 
 \begin_inset Quotes erd
@@ -588,7 +610,7 @@ No
  scheme on disjoint classes.
  For two disjoint subclass graphs, it is sufficient to state that the two
  root classes (the classes which do not have an 
-\begin_inset Formula $isa$
+\begin_inset Formula $is\_a$
 \end_inset
 
  relation to other classes in their respective subgraph) are disjoint with
@@ -600,11 +622,11 @@ No
 
 No 
 \emph on
-exocrine cell
+exocrine_cell
 \emph default
  is 
 \emph on
-endocrine cell
+endocrine_cell
 \emph default
 
 \begin_inset Quotes erd
@@ -616,11 +638,11 @@ endocrine cell
 
 No 
 \emph on
-endocrine cell 
+endocrine_cell 
 \emph default
 is 
 \emph on
-exocrine cell
+exocrine_cell
 \emph default
 
 \begin_inset Quotes erd
@@ -633,7 +655,7 @@ reference "eq:rho2"
 
 \end_inset
 
- in tandem with 
+ in conjunction with 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:rho1"
@@ -642,11 +664,11 @@ reference "eq:rho1"
 
  to infer that all subclasses of 
 \emph on
-exocrine cell
+exocrine_cell
 \emph default
  are disjoint with all subclasses of 
 \emph on
-endocrine cell 
+endocrine_cell 
 \emph default
 and vice versa.
 \end_layout
@@ -659,7 +681,7 @@ Partonomic relations
 As classification logic is concerned solely with taxonomic relations (ie.
  
 \emph on
-isa
+is_a
 \emph default
 ), we can not readily utilize it to describe partonomies.
  We could use classification on a meta level with classes ranging over partially
@@ -669,11 +691,11 @@ isa
 
 Every 
 \emph on
-exocrine pancreas
+exocrine_pancreas
 \emph default
  is 
 \emph on
-has part duct
+has_part_duct
 \emph default
 
 \begin_inset Quotes erd
@@ -681,11 +703,11 @@ has part duct
 
 , where 
 \emph on
-has part duct
+has_part_duct
 \emph default
  is the class of objects which has the 
 \emph on
-haspart
+has_part
 \emph default
  relationship with 
 \emph on
@@ -694,17 +716,13 @@ duct
 s.
  A problem with this approach is that 
 \emph on
-has part duct
+has_part_duct
 \emph default
  has no explicit relation to the class 
 \emph on
 duct
 \emph default
-; as such, we must be able to decode the meaning of 
-\emph on
-has part duct
-\emph default
- manually.
+; as such the meaning of has_part_duct must be decoded maunally afterwards.
  Additionally, it would lead to considerable pollution of the ontological
  description, thereby increasing the amount of information required to derive
  partonomic relationships.

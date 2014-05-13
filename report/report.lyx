@@ -212,7 +212,7 @@ relations.pl
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
-filename "/Users/srnjcbsn/Ontological/relations.pl"
+filename "../relations.pl"
 
 \end_inset
 
@@ -226,7 +226,7 @@ relationsdb.pl
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
-filename "/Users/srnjcbsn/Ontological/relationsdb.pl"
+filename "../relationsdb.pl"
 
 \end_inset
 
