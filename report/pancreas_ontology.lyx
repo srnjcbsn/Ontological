@@ -59,6 +59,63 @@
 
 \begin_body
 
+\begin_layout Itemize
+
+\family typewriter
+\emph on
+inst
+\family default
+\emph default
+, 
+\family typewriter
+\emph on
+part
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+A is_a B
+\emph default
+: 
+\begin_inset Formula $\forall x\left[\text{\emph{\texttt{inst}}}\left(x,A\right)\rightarrow\text{\emph{\texttt{inst}}}\left(x,B\right)\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+A part_for
+\emph default
+ 
+\emph on
+B
+\emph default
+: 
+\begin_inset Formula $\forall x\left[\text{\emph{\texttt{inst}}}\left(x,A\right)\rightarrow\exists y\left[\text{\emph{\texttt{inst}}}\left(y,B\right)\land\text{\emph{\texttt{part}}}\left(x,y\right)\right]\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+B has_part A
+\emph default
+: 
+\begin_inset Formula $\forall y\left[\text{\emph{\texttt{inst}}}\left(y,B\right)\rightarrow\exists x\left[\text{\emph{\texttt{inst}}}\left(y,B\right)\land\text{\emph{\texttt{part}}}\left(x,y\right)\right]\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+overlapping and disjoint classes
+\end_layout
+
 \begin_layout Standard
 Two classes 
 \begin_inset Formula $P$

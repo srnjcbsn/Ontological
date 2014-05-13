@@ -144,6 +144,17 @@ filename "prolog_implementation.lyx"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "refs"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 \begin_inset ERT
 status open
