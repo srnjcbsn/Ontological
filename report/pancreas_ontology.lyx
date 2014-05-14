@@ -130,7 +130,7 @@ part
 \end_layout
 
 \begin_layout Standard
-Using the instantiation and parthood relations introduced above, the following
+Using the instance and parthood relations introduced above, the following
  class relations are defined:
 \end_layout
 
@@ -298,6 +298,13 @@ A
 
 \begin_layout Subsection
 The pancreas ontology
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:The-pancreas-ontology"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -752,26 +759,76 @@ Overlapping classes and disjointness
 \end_layout
 
 \begin_layout Standard
-Two classes 
-\begin_inset Formula $P$
+In contrast to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rosse2004a"
+
+\end_inset
+
+, the taxonomy presented in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:pancreas_ontology"
+
+\end_inset
+
+ is not a hierarchy.
+ As an example, an endocrine pancreatic cell is simultaneously a pancreatic
+ and an endocrine cell, which are both subclasses of 
+\emph on
+cell
+\emph default
+.
+ For this reason, we define two classes 
+\emph on
+A 
+\emph default
+and 
+\emph on
+B 
+\emph default
+as overlapping on a class 
+\begin_inset Formula $C$
+\end_inset
+
+ if 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+C is_a A
+\emph default
+
+\begin_inset Quotes erd
 \end_inset
 
  and 
-\begin_inset Formula $Q$
+\begin_inset Quotes eld
 \end_inset
 
- are overlapping if they have a common subclass 
-\begin_inset Formula $R$
+
+\emph on
+C is_a B
+\emph default
+
+\begin_inset Quotes erd
 \end_inset
 
- such that 
-\begin_inset Formula $R\ is\_a\ P$
-\end_inset
-
+, ie.
+ if 
+\emph on
+C
+\emph default
+ is a common subclass of 
+\emph on
+A
+\emph default
  and 
-\begin_inset Formula $R\ is\_a\ Q$
-\end_inset
-
+\emph on
+B
+\emph default
 .
  In the pancreas ontology, the classes 
 \emph on
@@ -786,9 +843,28 @@ endocrine cell
 endocrine pancreatic cell
 \emph default
 .
- For disjointness the opposite is true, that is two classes are disjoint
- if they do not have any overlapping classes, ie.
- there no classes which are a desendant of both P and Q.
+ Disjointness of two classes 
+\emph on
+A
+\emph default
+ and 
+\emph on
+B
+\emph default
+ can then be defined as non-overlap, ie.
+ that no class 
+\emph on
+C 
+\emph default
+is a descendant of both 
+\emph on
+A
+\emph default
+ and 
+\emph on
+B
+\emph default
+.
 \end_layout
 
 \end_body

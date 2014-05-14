@@ -65,6 +65,222 @@
 \begin_body
 
 \begin_layout Standard
+As CRL-Meta is only concerned with relations between classes, the four schemes
+ presented above (reference) are replaced with ternary predicates 
+\begin_inset Formula $PQ\left(c,r,d\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $PQ\in\left\{ \forall\forall,\forall\exists,\exists\forall,\exists\exists\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $c$
+\end_inset
+
+ and 
+\begin_inset Formula $d$
+\end_inset
+
+ are classes and 
+\begin_inset Formula $r$
+\end_inset
+
+ is a binary relation between classes.
+ As such, classes and relations are represented as ground terms instead
+ of unary and binary predicates respectively.
+ This allows implementation of a knowledge base in 
+\shape smallcaps
+Datalog
+\shape default
+ in the form of clauses of 
+\begin_inset Formula $PQ$
+\end_inset
+
+ predicates.
+ In the meta logic, class inclusion is denoted by 
+\begin_inset Formula $\forall\exists\left(C,R,D\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $R$
+\end_inset
+
+ is the identity relation 
+\begin_inset Formula $=$
+\end_inset
+
+, abbreviated 
+\begin_inset Formula $isa\left(C,D\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{alignat*}{1}
+\left[\!\left[PQ\left(c,r,d\right)\right]\!\right] & \triangleq\begin{cases}
+\forall x\left(\left[\!\left[c(x)\right]\!\right]\rightarrow\left[\!\left[Q\left(x,r,d\right)\right]\!\right]\right) & \text{iff }P=\forall'\\
+\exists x\left(c(x)\land\left[\!\left[Q\left(x,r,d\right)\right]\!\right]\right) & \text{iff }P='\exists'
+\end{cases}\\
+\left[\!\left[Q\left(x,r,d\right)\right]\!\right] & \triangleq\begin{cases}
+\forall y\left(\left[\!\left[inst\left(y,d\right)\right]\!\right]\rightarrow r\left(x,y\right)\right) & \text{iff }Q='\forall'\\
+\exists y\left(d(y)\land r\left(x,y\right)\right) & \text{iff }Q='\exists'
+\end{cases}
+\end{alignat*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Inference rules
+\end_layout
+
+\begin_layout Standard
+In CRL-Meta, we can now define the following inference rules concerning
+ class inheritance for the 
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+-scheme:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\forall\exists\left(C,R,D\right)\qquad isa\left(C',C\right)}{\forall\exists\left(C',R,D\right)}\label{eq:inheritax1}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\frac{\forall\exists\left(C,R,D\right)\qquad isa\left(D,D'\right)}{\forall\exists\left(C,R,D'\right)}\label{eq:inheritax2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These inference rules state that any relations that a class 
+\begin_inset Formula $C$
+\end_inset
+
+ has with other classes, as well as those other classes has with 
+\begin_inset Formula $C$
+\end_inset
+
+, are inherited by the subclasses of 
+\begin_inset Formula $C$
+\end_inset
+
+.
+ As discussed in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sub:The-pancreas-ontology"
+
+\end_inset
+
+ the inclusion relation is transitive, which leads to the inference rule
+ in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:transitivity_crl"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{isa\left(C,C'\right)\qquad isa\left(C',D\right)}{isa\left(C,D\right)}\label{eq:transitivity_crl}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Due to the removal of the quantifiers from the 
+\begin_inset Formula $PQ$
+\end_inset
+
+-schemes, it is trivial to restate the above inference rules in 
+\shape smallcaps
+Datalog
+\shape default
+.
+ For example, 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:transitivity_crl"
+
+\end_inset
+
+ becomes 
+\begin_inset Formula 
+\[
+isa\left(C,D\right)\leftarrow isa\left(C,C'\right),\ isa\left(C',D\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Additionally, we can state the definitions of overlap and disjointness from
+ 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sub:The-pancreas-ontology"
+
+\end_inset
+
+ as shown in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:overlap_crl"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:disjoint_crl"
+
+\end_inset
+
+, respectively.
+\begin_inset Formula 
+\begin{equation}
+overlap\left(C,D\right)\leftarrow isa\left(X,C\right)\land isa\left(X,D\right)\label{eq:overlap_crl}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+disjoint\left(C,D\right)\leftarrow\ \nvdash overlap\left(C,D\right)\label{eq:disjoint_crl}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 In CRL-Meta, 
 \family roman
 \series medium
@@ -88,6 +304,26 @@ In CRL-Meta,
  with ground terms (we do not concern ourselves with individuals in classes,
  only relations between classes).
  Similarly for the other schemes.
+\end_layout
+
+\begin_layout Itemize
+Inheritance rules:
+\end_layout
+
+\begin_layout Itemize
+is_a is transitive 
+\begin_inset Formula 
+\[
+is\_a\left(X,Y\right)\leftarrow is\_a\left(X,Z\right)\land is\_a\left(Z,Y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+disjointness, overlap
 \end_layout
 
 \begin_layout Itemize
@@ -154,55 +390,7 @@ CRL operates under the CWA.
 \end_layout
 
 \begin_layout Itemize
-is_a is transitive 
-\begin_inset Formula 
-\[
-is\_a\left(X,Y\right)\leftarrow is\_a\left(X,Z\right)\land is\_a\left(Z,Y\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Inheritance rules:
-\begin_inset Formula 
-\begin{equation}
-\frac{\forall\exists\left(C,R,D\right)\qquad isa\left(C',C\right)}{\forall\exists\left(C',R,D\right)}\label{eq:inheritax1-1}
-\end{equation}
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-\frac{\forall\exists\left(C,R,D\right)\qquad isa\left(D,D'\right)}{\forall\exists\left(C,R,D'\right)}\label{eq:inheritax2-1}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-disjointness, overlap
-\begin_inset Formula 
-\begin{equation}
-overlap\left(C,D\right)\leftarrow isa\left(X,C\right)\land isa\left(X,D\right)\label{eq:overlap_crl-1}
-\end{equation}
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-disjoint\left(C,D\right)\leftarrow\nvdash overlap\left(C,D\right)\label{eq:disjoint_crl-1}
-\end{equation}
-
-\end_inset
-
-
+DATALOG
 \end_layout
 
 \end_deeper
