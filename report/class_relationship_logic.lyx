@@ -149,6 +149,18 @@ CRL operates under the CWA.
 \end_layout
 
 \begin_layout Itemize
+is_a is transitive 
+\begin_inset Formula 
+\[
+is\_a\left(X,Y\right)\leftarrow is\_a\left(X,Z\right)\land is\_a\left(Z,Y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 Inheritance rules:
 \begin_inset Formula 
 \begin{equation}

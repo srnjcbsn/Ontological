@@ -61,8 +61,8 @@
 \begin_body
 
 \begin_layout Standard
-Our prolog program is designed for effective class relationship queries
- in the pancreas ontology.
+Our prolog program is designed for class relationship queries in the pancreas
+ ontology.
  
 \end_layout
 
@@ -94,11 +94,92 @@ According to CRL we have four different types of relationships
 \end_inset
 
  as it is the only type of relation specified in the ontology.
- In our prior analyze of the pancreas ontology we have determined that there
- are five types of relations is_a, has_a, part_for, part_of and secretes.
+ In our analysis of the pancreas ontology (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:The-pancreas-ontology"
+
+\end_inset
+
+) we determined that there are five types of relations, namely 
+\emph on
+is_a
+\emph default
+, 
+\emph on
+has_part
+\emph default
+, 
+\emph on
+part_for
+\emph default
+, 
+\emph on
+part_of
+\emph default
+ and 
+\emph on
+secretes
+\emph default
+.
  Thus in order to have a complete database we have recorded all these relations,
- except for part_of as it can be derived from the rule that a class A is
- part_of B, if both B is part_for A and A has_a B as defined in 
+ except for 
+\emph on
+part_of
+\emph default
+ as it can be derived from the rule that a class 
+\emph on
+A 
+\emph default
+has the 
+\emph on
+part_of
+\emph default
+ relation with respect to 
+\emph on
+B
+\emph default
+ if both 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+B
+\emph default
+ 
+\emph on
+part_for
+\emph default
+ 
+\emph on
+A
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+A
+\emph default
+ 
+\emph on
+has_part
+\emph default
+ 
+\emph on
+B
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ as defined in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "rosse2004a"
@@ -110,18 +191,21 @@ key "rosse2004a"
 \end_layout
 
 \begin_layout Subsubsection*
-Recording in the database
+Storing data in the database
 \end_layout
 
 \begin_layout Standard
-As data must be defined in CRL-Meta, the classes are defined as constants
- aswell as the relations, including class inclusion as it is only a special
+As data must be defined in CRL-Meta, the classes as well as the relations
+ are defined as constants, including class inclusion as it is a special
  case of a relation.
- Furthermore, we require that all classes are recorded as we do not want
- class conception to come from its relations, while this among other things
- is good practice, as hinging a class's existances on its relations is not
- recommended, there is also inherent value in having the ability to efficiently
- query all classes of the KB.
+ Furthermore, we require that all classes are explicitly recorded with the
+ 
+\family typewriter
+class/1
+\family default
+ predicate, as we do not want class conception to come from its relations.
+ While this in itself is good practice, there is also inherent value in
+ having the ability to query all classes of the KB efficiently.
  
 \end_layout
 
@@ -142,12 +226,37 @@ class(A)
 \end_layout
 
 \begin_layout Standard
-where A is the class he wants to be part of the database such as cell, pp_cell,..
- ect.
+where A is the class he wants to be part of the database such as 
+\emph on
+cell
+\emph default
+, 
+\emph on
+pp_cell
+\emph default
+, etc.
 \end_layout
 
 \begin_layout Standard
-To define a relation between two classes the user inserts:
+To define a relation 
+\family typewriter
+\emph on
+R
+\family default
+\emph default
+ between two classes 
+\family typewriter
+\emph on
+A
+\family default
+\emph default
+ and 
+\family typewriter
+\emph on
+B
+\family default
+\emph default
+, the user inserts:
 \end_layout
 
 \begin_layout Standard
@@ -157,7 +266,7 @@ status open
 
 \begin_layout Plain Layout
 
-relation_ae(R, A, B)
+ae_relation(R, A, B)
 \end_layout
 
 \end_inset
@@ -166,7 +275,11 @@ relation_ae(R, A, B)
 \end_layout
 
 \begin_layout Standard
-the name relation_ae refer to it being a 
+the name 
+\family typewriter
+ae_relation
+\family default
+ refer to it being a 
 \begin_inset Formula $\forall\exists$
 \end_inset
 
@@ -199,28 +312,85 @@ status open
 \end_layout
 
 \begin_layout Standard
-the refers to it being 
-\begin_inset Formula $\forall\exists$
-\end_inset
-
- relation query.
+where
 \end_layout
 
 \begin_layout Description
-R is the relation that the user want to check, which can be is_a, has_a,
- etc.
- it is also possible to leave R unbounded, such that the program will try
- to find all the relations instead, instead of just checking an specific.
+
+\family typewriter
+\emph on
+R
+\family default
+\emph default
+ is the relation that the user want to check, which can be 
+\emph on
+is_a
+\emph default
+, 
+\emph on
+has_part
+\emph default
+, etc.
+ it is also possible to leave 
+\family typewriter
+\emph on
+R
+\family default
+\emph default
+ as a variable, such that the program will try to find all existing relations
+ between 
+\family typewriter
+\emph on
+A
+\family default
+\emph default
+ and 
+\family typewriter
+\emph on
+B
+\family default
+\emph default
+, instead fo a single, specific relation.
 \end_layout
 
 \begin_layout Description
-A,
+
+\family typewriter
+\emph on
+A
+\family default
+\emph default
+,
 \begin_inset space ~
 \end_inset
 
-B is the two classes which the user want to check whether the given relation
- holds true, the full query should be read as A R B, for instance pp_cell
- is_a cell.
+
+\family typewriter
+\emph on
+B
+\family default
+\emph default
+ are the two classes for which the user want to check whether the given
+ relation holds true.
+ The full query should be read as 
+\family typewriter
+\emph on
+A R B
+\family default
+\emph default
+, for instance 
+\emph on
+pp_cell
+\emph default
+ 
+\emph on
+is_a
+\emph default
+ 
+\emph on
+cell
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -228,10 +398,16 @@ To define an
 \begin_inset Formula $\forall\exists$
 \end_inset
 
- query we set it up as three indivual rules the first is the identity rule
- of is_a the next is the transitivity rule and the last is the rule to define
- part_of.
- Identity rule is triviel as it is defined as 
+ query we set it up as three indivual rules: the identity rule of 
+\emph on
+is_a
+\emph default
+, the transitivity rule and the rule to define 
+\emph on
+part_of
+\emph default
+.
+ The identity rule is trivial as it is defined as:
 \end_layout
 
 \begin_layout Standard
@@ -250,7 +426,11 @@ ae(is_a, A, A).
 \end_layout
 
 \begin_layout Standard
-aswell as the part_of rule as it is defined as
+as is the 
+\emph on
+part_of
+\emph default
+ rule, defined as:
 \end_layout
 
 \begin_layout Standard
@@ -260,7 +440,7 @@ status open
 
 \begin_layout Plain Layout
 
-ae(part_of, A, B):- ae(has_a,B,A), ae(part_for,A,B)
+ae(part_of, A, B) :- ae(has_a,B,A), ae(part_for,A,B)
 \end_layout
 
 \end_inset
@@ -269,31 +449,34 @@ ae(part_of, A, B):- ae(has_a,B,A), ae(part_for,A,B)
 \end_layout
 
 \begin_layout Standard
-The interesting of these is how to define transitivity as there are inheritance
- axioms for is_a to consider as presented in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "nilsson2011a"
+To define the transitivity rule, we take into consideration the inheritance
+ axioms for 
+\emph on
+is_a
+\emph default
+ presented in 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Class-relationship-logic"
 
 \end_inset
 
-.
- Which we stated at 
+ (equations 
 \begin_inset CommandInset ref
-LatexCommand formatted
+LatexCommand ref
 reference "eq:inheritax1"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
-LatexCommand formatted
+LatexCommand ref
 reference "eq:inheritax2"
 
 \end_inset
 
-.
- As such the two first rules of transitivity are well known
+).
+ As such the two first rules of transitivity are well known:
 \end_layout
 
 \begin_layout Standard
@@ -303,12 +486,12 @@ status open
 
 \begin_layout Plain Layout
 
-transitivity(R, A, B):-relation_ae(R, A,B).
+transitivity(R, A, B) :- relation_ae(R, A, B).
 \end_layout
 
 \begin_layout Plain Layout
 
-transitivity(R, A, C):-
+transitivity(R, A, C) :-
 \end_layout
 
 \begin_layout Plain Layout
@@ -328,15 +511,15 @@ transitivity(R, A, C):-
 
 \begin_layout Standard
 Our definition of transitivity is not exactly the same as the crl version
- stated at 
+ stated in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "eq:transitivity_crl"
 
 \end_inset
 
-, this being because while that version is theoretically correct it does
- not deal with its inherent termination problem.
+, as that would introduce a termination problem if directly implemented
+ in prolog.
  The version which we have defined accomplishes the exact same rule but
  requires data to be present for it pursue the recursion path.
  If we chose to define it as the crl version it would look like this
@@ -349,12 +532,12 @@ status open
 
 \begin_layout Plain Layout
 
-transitivity(R, A, B):-relation_ae(R, A,B).
+transitivity(R, A, B) :- relation_ae(R, A,B).
 \end_layout
 
 \begin_layout Plain Layout
 
-transitivity(R, A, C):-
+transitivity(R, A, C) :-
 \end_layout
 
 \begin_layout Plain Layout
@@ -373,15 +556,22 @@ transitivity(R, A, C):-
 \end_layout
 
 \begin_layout Standard
-However as prolog does a DFS(depth-first search) it would match on the first
- transitivity predicate at the recursion rule, and given that the B variable
+However as prolog does a DFS (depth-first search) it would match on the
+ first transitivity predicate at the recursion rule, and given that the
+ variable 
+\family typewriter
+\emph on
+B
+\family default
+\emph default
  is free, this would cause the next recursion to also contain a free variable
- thus this will cause an infinite loop.
+ and thus cause an infinite loop.
 \end_layout
 
 \begin_layout Standard
-Next in the transitivity rules we need to define a rule to accomondate class
- inheritance, as such the inheritance axioms incorporation are defined as
+Next in the transitivity rules we need to define a rule to accomodate class
+ inheritance, as such the incorporation of the inheritance axioms are defined
+ as
 \end_layout
 
 \begin_layout Standard
@@ -421,8 +611,43 @@ transitivity(R,A,C):-
 \end_layout
 
 \begin_layout Standard
-where if you replace A with C', C with D and B with C, you will get the
- exact same as defined in 
+where if you replace 
+\family typewriter
+\emph on
+A
+\family default
+\emph default
+ with 
+\family typewriter
+\emph on
+C'
+\family default
+\emph default
+, 
+\family typewriter
+\emph on
+C
+\family default
+\emph default
+ with 
+\family typewriter
+\emph on
+D
+\family default
+\emph default
+ and 
+\family typewriter
+\emph on
+B
+\family default
+\emph default
+ with 
+\family typewriter
+\emph on
+C
+\family default
+\emph default
+, you will get the exact same as defined in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "BROKEN: Format: eq:inheritax1"
@@ -430,26 +655,37 @@ reference "BROKEN: Format: eq:inheritax1"
 \end_inset
 
 .
- Furthermore notice that as we do not recognize is_a as first class citizens
- we must include a negation as failure on is_a to avoid a double answer.
- The same done for 
+ Furthermore notice that as we do not recognize 
+\emph on
+is_a
+\emph default
+ as a first class citizens we must include a negation as failure on 
+\emph on
+is_a
+\emph default
+ to avoid a duplicate answer.
+ The same holds for 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "BROKEN: Format: eq:inheritax2"
 
 \end_inset
 
-, which is triviel once you understand the first.
+, which is trivial once you understand the first.
 \end_layout
 
 \begin_layout Standard
-A last thing to notice is that to avoid duplicates of the same answer we
- have chosen to wrap our ae predicate in a 
+A last thing to note is that to avoid duplicate answers we have chosen to
+ wrap our 
+\family typewriter
+ae
+\family default
+ predicate in a 
 \family typewriter
 setof
 \family default
- which filters the answer, however this has no theoretical value it is purely
- for convenience.
+ which filters the answer.
+ This has no theoretical value, but is rather convenient.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -457,7 +693,7 @@ Overlap and Disjoint
 \end_layout
 
 \begin_layout Standard
-To use check for overlap use the following predicate
+To check for overlapping classes, use the following predicate:
 \end_layout
 
 \begin_layout Standard
@@ -475,26 +711,52 @@ status open
 
 \end_layout
 
-\begin_layout Description
-A,
-\begin_inset space ~
-\end_inset
-
-B are the classes which we wish to determine if they overlap.
+\begin_layout Standard
+where
 \end_layout
 
 \begin_layout Description
-X is the class which causes the A and B classes to overlap, which is interesting
- to know about when determining overlaps.
- However this can be set as 
-\begin_inset Quotes eld
+
+\family typewriter
+\emph on
+A
+\family default
+\emph default
+,
+\begin_inset space ~
 \end_inset
 
-don't care
-\begin_inset Quotes erd
-\end_inset
 
- if it is not wanted.
+\family typewriter
+\emph on
+B
+\family default
+\emph default
+ are the classes which we chaeck for overlap.
+\end_layout
+
+\begin_layout Description
+
+\family typewriter
+\emph on
+X
+\family default
+\emph default
+ is the class which causes the 
+\family typewriter
+\emph on
+A
+\family default
+\emph default
+ and 
+\family typewriter
+\emph on
+B
+\family default
+\emph default
+ to overlap.
+ An underscore can be used in its place if this information is not deemed
+ relevant.
 \end_layout
 
 \begin_layout Standard
@@ -505,8 +767,25 @@ reference "eq:overlap_crl"
 
 \end_inset
 
- as we stated earlier, which is that there exists a class X which is the
- desendant of both A and B, thus we define overlap only consist of the rule
+ as we stated earlier, which is that there exists a class 
+\family typewriter
+\emph on
+X
+\family default
+\emph default
+ which is the desendant of both 
+\family typewriter
+\emph on
+A
+\family default
+\emph default
+ and 
+\family typewriter
+\emph on
+B
+\family default
+\emph default
+, thus we define overlap only consist of the rule
 \end_layout
 
 \begin_layout Standard
@@ -516,7 +795,7 @@ status open
 
 \begin_layout Plain Layout
 
-common_desendant(X, A, B)
+common_descendant(X, A, B)
 \end_layout
 
 \end_inset
@@ -525,8 +804,25 @@ common_desendant(X, A, B)
 \end_layout
 
 \begin_layout Standard
-and we define a common desendant by X having both A and B as an ancestor
- ei.
+and we define a common descendant by 
+\family typewriter
+\emph on
+X
+\family default
+\emph default
+ having both 
+\family typewriter
+\emph on
+A
+\family default
+\emph default
+ and 
+\family typewriter
+\emph on
+B
+\family default
+\emph default
+ ancestors, ie.
 \end_layout
 
 \begin_layout Standard
@@ -557,11 +853,11 @@ reference "eq:overlap_crl"
 
 \begin_layout Standard
 An interesting property of the definition is that it will conclude that
- two classes which are lineally related also overlap, ei.
+ two classes which are lineally related also overlap, ie.
  classes where either of them is the ancestor of the other.
- While this is clearly a definition question it might not be relavant to
- the user that two classes are lineally related, to accommondate this need
- we have another predicate
+ While this is clearly a question of definition, it might not be relavant
+ to the user that two classes are lineally related.
+ To accommondate this, we introduce the following predicate:
 \end_layout
 
 \begin_layout Standard
@@ -580,9 +876,9 @@ status open
 \end_layout
 
 \begin_layout Standard
-which has same input scheme as the overlap predicate.
+which has the same input scheme as the overlap predicate.
  The definition of this predicate is merely an extension to the overlap
- definition adding two extra rules.
+ definition, adding the two extra rules
 \end_layout
 
 \begin_layout Standard
@@ -605,12 +901,24 @@ status open
 \end_layout
 
 \begin_layout Standard
-which ensures that the rule will fail when A and B are lineally related.
+which ensure that the rule will fail when 
+\family typewriter
+\emph on
+A
+\family default
+\emph default
+ and 
+\family typewriter
+\emph on
+B
+\family default
+\emph default
+ are lineally related.
 \end_layout
 
 \begin_layout Standard
-To check if two classes are disjoint, ei.
- not overlapping, use the predicate
+To check whether two classes are disjoint, ie.
+ not overlapping, the following predicate can be used:
 \end_layout
 
 \begin_layout Standard
@@ -628,23 +936,43 @@ status open
 
 \end_layout
 
+\begin_layout Standard
+where 
+\end_layout
+
 \begin_layout Description
-C,
+
+\family typewriter
+\emph on
+C
+\family default
+\emph default
+,
 \begin_inset space ~
 \end_inset
 
-D are the two classes which are checked if they are disjoint.
+
+\family typewriter
+\emph on
+D
+\family default
+\emph default
+ are the two classes which are checked for disjointness.
 \end_layout
 
 \begin_layout Standard
-Our disjoint follows the definition stated on 
+Our 
+\family typewriter
+disjoint
+\family default
+ predicate follows the definition stated in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "eq:disjoint_crl"
 
 \end_inset
 
-, which is
+, which is the following:
 \end_layout
 
 \begin_layout Standard
@@ -666,8 +994,7 @@ status open
 
 \begin_layout Standard
 Which means that two classes are disjoint if they are not overlapping.
- Furthermore in our program definition of disjoint we also have that two
- predicates
+ We also require that the two input variables must be classes:
 \end_layout
 
 \begin_layout Standard
@@ -686,8 +1013,20 @@ class(C), class(D)
 \end_layout
 
 \begin_layout Standard
-the reason being that we need to lock the variables C and D for the negation
- as failure definition to work given open variables on the input to disjoint.
+the reason being that we need to lock the variables 
+\family typewriter
+\emph on
+C
+\family default
+\emph default
+ and 
+\family typewriter
+\emph on
+D
+\family default
+\emph default
+ for the negation as failure definition to work, given open variables on
+ the input to disjoint.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -718,7 +1057,13 @@ status open
 \end_layout
 
 \begin_layout Description
-O is the output of the error, which is a tuple of different length depending
+
+\family typewriter
+\emph on
+O
+\family default
+\emph default
+ is the output of the error, which is a tuple of different length depending
  on the error.
 \end_layout
 
@@ -727,20 +1072,31 @@ There are three different types of errors that can occur in our database
 \end_layout
 
 \begin_layout Description
-class_missing is when a class has a relation with another class but is not
- defined in our class table.
+
+\family typewriter
+class_missing
+\family default
+ is when a class has a relation with another class but is not defined in
+ our class table.
 \end_layout
 
 \begin_layout Description
-reflexive is when a relation is found to be reflexive as the property of
- all our relations is that they are irreflexive, this error will ignore
- the is_a relation as that relation in constrast to the others actually
- is reflexive.
+
+\family typewriter
+reflexive
+\family default
+ is when a relation is found to be reflexive as the property of all our
+ relations is that they are irreflexive, this error will ignore the is_a
+ relation as that relation in constrast to the others actually is reflexive.
 \end_layout
 
 \begin_layout Description
-Symmetric_with is when a class has a symmetric relation with another class,
- using the definition of symmetri from 
+
+\family typewriter
+symmetric_with
+\family default
+ is when a class has a symmetric relation with another class, using the
+ definition of symmetri from 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "eq:symmetric_crl"
