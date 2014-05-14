@@ -65,14 +65,20 @@
 \begin_body
 
 \begin_layout Standard
-CRL (Class Relationship Logic) is a logic designed specifically to define
- relationships that exists between classes of individuals.
- In CRL we can express relationships in four different forms, which are
- based on their prefix quantifiers.
+To remedy some of the problems with classification logic presented in the
+ previous section, we will now direct our attention towards class relationship
+ logic, as it introduces a more flexible and general approach to describing
+ ontologies based on predicate logic and 
+\shape smallcaps
+Datalog
+\shape default
+.
+ 
 \end_layout
 
 \begin_layout Standard
-A short explanation of the different prefixes follows:
+In CRL we can express relationships in four different forms, which are based
+ on their prefix quantifiers:
 \end_layout
 
 \begin_layout Description
