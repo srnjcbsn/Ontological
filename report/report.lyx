@@ -152,7 +152,17 @@ name "sec:Class-relationship-logic"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "class_relationship_logic.lyx"
+filename "crl.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "crl_meta.lyx"
 
 \end_inset
 

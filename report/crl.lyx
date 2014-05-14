@@ -65,7 +65,7 @@
 \begin_body
 
 \begin_layout Standard
-CRL or Class Relationship Logic is a logic designed specifically to define
+CRL (Class Relationship Logic) is a logic designed specifically to define
  relationships that exists between classes of individuals.
  In CRL we can express relationships in four different forms, which are
  based on their prefix quantifiers.
@@ -83,8 +83,16 @@ A short explanation of the different prefixes follows:
 \begin_inset Formula $\exists x\,(\, c(x)\wedge\exists y\,(\, d(y)\wedge r(x,y)\,)\,)$
 \end_inset
 
-, which defines that there exists an instance of class c for which there
- exists an instance of class, where those two instances has a relation r.
+, which defines that there exists an instance of class 
+\emph on
+c
+\emph default
+ for which there exists an instance of class, where those two instances
+ has a relation 
+\emph on
+r
+\emph default
+.
 \end_layout
 
 \begin_layout Description
@@ -95,8 +103,19 @@ A short explanation of the different prefixes follows:
 \begin_inset Formula $\exists x\,(\, c(x)\wedge\forall y\,(\, d(y)\rightarrow r(x,y)\,)\,)$
 \end_inset
 
-, which defines that there exists an instace of class c for which every
- instance of class d has a relation r with that instance of c.
+, which defines that there exists an instace of class 
+\emph on
+c
+\emph default
+ for which every instance of class 
+\emph on
+d
+\emph default
+ has a relation r with that instance of 
+\emph on
+c
+\emph default
+.
 \end_layout
 
 \begin_layout Description
@@ -107,8 +126,19 @@ A short explanation of the different prefixes follows:
 \begin_inset Formula $\forall x\,(\, c(x)\rightarrow\forall y\,(\, d(y)\rightarrow r(x,y)\,)\,)$
 \end_inset
 
- which defines that every instance of class c has a relation r with every
- instance of class d.
+ which defines that every instance of class 
+\emph on
+c
+\emph default
+ has a relation 
+\emph on
+r
+\emph default
+ with every instance of class 
+\emph on
+d
+\emph default
+.
 \end_layout
 
 \begin_layout Description
@@ -119,8 +149,19 @@ A short explanation of the different prefixes follows:
 \begin_inset Formula $\forall x\,(\, c(x)\rightarrow\exists y\,(\, d(y)\rightarrow r(x,y)\,)\,)$
 \end_inset
 
- which defines that every instance of class c has a relation r with atleast
- one instance of class d.
+ which defines that every instance of class 
+\emph on
+c
+\emph default
+ has a relation 
+\emph on
+r
+\emph default
+ with atleast one instance of class 
+\emph on
+d
+\emph default
+.
  This is also the most predominant of the relationship scheme, as it is
  necessary to express taxonomies.
 \end_layout
@@ -180,54 +221,6 @@ Another principle of CRL is that all classes are considered non-empty, that
  Such as the case of every A is B does not entail Some B is A, which we
  showed in our classification logic description.
  
-\end_layout
-
-\begin_layout Subsubsection*
-The necessity of CRL-Meta for represting relationships in datalog
-\end_layout
-
-\begin_layout Standard
-In order to represent an ,
-\begin_inset Formula $\forall\exists$
-\end_inset
-
--relationship in datalog the use of skolem functions would required.
- 
-\end_layout
-
-\begin_layout Standard
-To quote 
-\begin_inset CommandInset citation
-LatexCommand citet
-after "Page 100"
-key "nilsson2011a"
-
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Quotation
-\begin_inset Quotes eld
-\end_inset
-
-The 
-\begin_inset Formula $\forall\exists$
-\end_inset
-
- relationships cannot be represented in Datalog clauses simply by the well-known
- rewriting to clause form, since removal of the existential quantiﬁer calls
- for Skolem functions introducing compound terms
-\begin_inset Quotes erd
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-Thus we will need the CRL to change to metalogical level such that individuals
- of classes are no longer the focus, but rather the classes themselves.
- This is why CRL-Meta is necessary.
 \end_layout
 
 \end_body
