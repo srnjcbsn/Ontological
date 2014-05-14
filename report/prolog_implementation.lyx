@@ -68,11 +68,26 @@ Our prolog program is designed for class relationship queries in the pancreas
 
 \begin_layout Standard
 The program consists of the definitions to query for relationship information
- as defined by the CRL and all the raw data of the pancreas ontology.
+ as defined by the CRL (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sub:relations.pl"
+
+\end_inset
+
+) and all the raw data of the pancreas ontology (see 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sub:relationsdb.pl"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
-According to CRL we have four different types of relationships 
+According to CRL, we have four different types of relationships, namely
+ 
 \begin_inset Formula $\forall\forall$
 \end_inset
 
@@ -89,7 +104,7 @@ According to CRL we have four different types of relationships
 \end_inset
 
 .
- However for the pancreas ontology we will only use 
+ For the pancreas ontology we will only use 
 \begin_inset Formula $\forall\exists$
 \end_inset
 
@@ -122,7 +137,7 @@ part_of
 secretes
 \emph default
 .
- Thus in order to have a complete database we have recorded all these relations,
+ In order to have a complete database, we have recorded all these relations,
  except for 
 \emph on
 part_of

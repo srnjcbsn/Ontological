@@ -231,6 +231,13 @@ Program listing
 
 \begin_layout Subsection
 relations.pl
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:relations.pl"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -246,6 +253,13 @@ lstparams "commentstyle={\\small},keywordstyle={\\itshape},language=Prolog,numbe
 
 \begin_layout Subsection
 relationsdb.pl
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:relationsdb.pl"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

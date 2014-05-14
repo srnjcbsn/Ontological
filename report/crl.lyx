@@ -83,15 +83,19 @@ A short explanation of the different prefixes follows:
 \begin_inset Formula $\exists x\,(\, c(x)\wedge\exists y\,(\, d(y)\wedge r(x,y)\,)\,)$
 \end_inset
 
-, which defines that there exists an instance of class 
+.
+ There exists an instance of class 
 \emph on
-c
+c 
 \emph default
- for which there exists an instance of class, where those two instances
- has a relation 
+which is 
 \emph on
 r
 \emph default
+-related to an instance of class 
+\begin_inset Formula $d$
+\end_inset
+
 .
 \end_layout
 
@@ -103,18 +107,19 @@ r
 \begin_inset Formula $\exists x\,(\, c(x)\wedge\forall y\,(\, d(y)\rightarrow r(x,y)\,)\,)$
 \end_inset
 
-, which defines that there exists an instace of class 
-\emph on
-c
-\emph default
- for which every instance of class 
-\emph on
-d
-\emph default
- has a relation r with that instance of 
-\emph on
-c
-\emph default
+.
+ There exists an instance of class 
+\begin_inset Formula $c$
+\end_inset
+
+ which is 
+\begin_inset Formula $r$
+\end_inset
+
+-related to all instances of class 
+\begin_inset Formula $d$
+\end_inset
+
 .
 \end_layout
 
@@ -126,18 +131,19 @@ c
 \begin_inset Formula $\forall x\,(\, c(x)\rightarrow\forall y\,(\, d(y)\rightarrow r(x,y)\,)\,)$
 \end_inset
 
- which defines that every instance of class 
-\emph on
-c
-\emph default
- has a relation 
-\emph on
-r
-\emph default
- with every instance of class 
-\emph on
-d
-\emph default
+.
+ Every instance of class 
+\begin_inset Formula $c$
+\end_inset
+
+ is 
+\begin_inset Formula $r$
+\end_inset
+
+-related to all instances of class 
+\begin_inset Formula $d$
+\end_inset
+
 .
 \end_layout
 
@@ -149,29 +155,52 @@ d
 \begin_inset Formula $\forall x\,(\, c(x)\rightarrow\exists y\,(\, d(y)\rightarrow r(x,y)\,)\,)$
 \end_inset
 
- which defines that every instance of class 
-\emph on
-c
-\emph default
- has a relation 
-\emph on
-r
-\emph default
- with atleast one instance of class 
-\emph on
-d
-\emph default
 .
- This is also the most predominant of the relationship scheme, as it is
- necessary to express taxonomies.
+ Every instance of class 
+\begin_inset Formula $c$
+\end_inset
+
+ is 
+\begin_inset Formula $r$
+\end_inset
+
+-related to some instance of class 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ This is the most predominant relationship scheme, as it is necessary to
+ express taxonomies.
 \end_layout
 
 \begin_layout Standard
-Unlike in classification logic which has taxonomy as part of it, CRL has
- taxonomy as just a special case.
- Thus this allows CRL to also express other special cases, such as partonomies.
- For instance to express a partonomy for instance a has_part relation ship
- between class A to B one can write:
+In contrast to classification logic, which is concerned solely with taxonomic
+ relationships, CRL has class inclusion as a special case of the 
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+ scheme.
+ In the same manner, the partonomic relations from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:The-pancreas-ontology"
+
+\end_inset
+
+ appears as a special case in CRL.
+ To express a 
+\emph on
+has_part
+\emph default
+ relation between classes 
+\emph on
+A
+\emph default
+ and 
+\emph on
+B
+\emph default
+, one could state the following:
 \end_layout
 
 \begin_layout Standard
@@ -186,7 +215,7 @@ Unlike in classification logic which has taxonomy as part of it, CRL has
 \end_layout
 
 \begin_layout Standard
-This means that CRL is objectively more expressive than classification logic.
+In conclusion, CRL is objectively more expressive than classification logic.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -194,12 +223,11 @@ Closed World Assumption
 \end_layout
 
 \begin_layout Standard
-CRL is designed with CWA as part of it, this has its advantages and disadvantage
-s.
- The advantage is for instance that expression of relations which are certain
- are concise as any non-relation does not require to be stated.
- However the disadvantage like with CWA in general is that information which
- is uncertain will be interpreted in CWA as non-existent.
+CRL operates under the closed world assumption, which --- in contrast to
+ the open world assumption adopted by classification logic --- allows any
+ non-relation to be inferred from its absence.
+ However, information which is uncertain will be interpreted in CRL as non-exist
+ent.
  
 \end_layout
 
@@ -208,19 +236,17 @@ Non-empty classes
 \end_layout
 
 \begin_layout Standard
-Another principle of CRL is that all classes are considered non-empty, that
- is at any given time they will contain atleast one member.
- If at any point all members leave their class thus making it an empty then
- that class will cease to be part of the CRL.
- The reason for why CRL can only handle non-empty classes is that there
- are multiple problems inherent to covering the general view that classes
- can be either empty or non-empty.
- Primarily non-classes from an ontological point of view are uninteresting.
- This means that to cover this uninteresting case we have to purposely increase
- the complexity in the ontological expression.
- Such as the case of every A is B does not entail Some B is A, which we
- showed in our classification logic description.
- 
+Another principle of CRL is that all classes are considered non-empty, as
+ empty classes --- from an ontological point of view --- are uninteresting.
+ If one were to handle empty classes, one would have to purposely increase
+ the complexity of the ontological expression, as discussed in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Classification-logic"
+
+\end_inset
+
+.
 \end_layout
 
 \end_body
