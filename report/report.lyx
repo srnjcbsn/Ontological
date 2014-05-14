@@ -213,6 +213,7 @@ relations.pl
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "../relations.pl"
+lstparams "commentstyle={\\small},keywordstyle={\\itshape},language=Prolog,numbers=left"
 
 \end_inset
 
@@ -227,6 +228,7 @@ relationsdb.pl
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "../relationsdb.pl"
+lstparams "commentstyle={\\itshape},keywordstyle={\\itshape},language=Prolog,numbers=left"
 
 \end_inset
 
