@@ -64,8 +64,170 @@
 
 \begin_body
 
-\begin_layout Title
+\begin_layout Standard
+CRL or Class Relationship Logic is a logic designed specifically to define
+ relationships that exists between classes of individuals.
+ In CRL we can express relationships in four different forms, which are
+ based on their prefix quantifiers.
+\end_layout
 
+\begin_layout Standard
+A short explanation of the different prefixes follows:
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\exists\exists$
+\end_inset
+
+: 
+\begin_inset Formula $\exists x\,(\, c(x)\wedge\exists y\,(\, d(y)\wedge r(x,y)\,)\,)$
+\end_inset
+
+, which defines that there exists an instance of class c for which there
+ exists an instance of class, where those two instances has a relation r.
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\exists\forall$
+\end_inset
+
+: 
+\begin_inset Formula $\exists x\,(\, c(x)\wedge\forall y\,(\, d(y)\rightarrow r(x,y)\,)\,)$
+\end_inset
+
+, which defines that there exists an instace of class c for which every
+ instance of class d has a relation r with that instance of c.
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\forall\forall$
+\end_inset
+
+: 
+\begin_inset Formula $\forall x\,(\, c(x)\rightarrow\forall y\,(\, d(y)\rightarrow r(x,y)\,)\,)$
+\end_inset
+
+ which defines that every instance of class c has a relation r with every
+ instance of class d.
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+: 
+\begin_inset Formula $\forall x\,(\, c(x)\rightarrow\exists y\,(\, d(y)\rightarrow r(x,y)\,)\,)$
+\end_inset
+
+ which defines that every instance of class c has a relation r with atleast
+ one instance of class d.
+ This is also the most predominant of the relationship scheme, as it is
+ necessary to express taxonomies.
+\end_layout
+
+\begin_layout Standard
+Unlike in classification logic which has taxonomy as part of it, CRL has
+ taxonomy as just a special case.
+ Thus this allows CRL to also express other special cases, such as partonomies.
+ For instance to express a partonomy for instance a has_part relation ship
+ between class A to B one can write:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\forall x\,(\, A(x)\rightarrow\exists y\,(\, B(y)\rightarrow has\_part(x,y)\,)\,)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This means that CRL is objectively more expressive than classification logic.
+\end_layout
+
+\begin_layout Subsubsection*
+Closed World Assumption
+\end_layout
+
+\begin_layout Standard
+CRL is designed with CWA as part of it, this has its advantages and disadvantage
+s.
+ The advantage is for instance that expression of relations which are certain
+ are concise as any non-relation does not require to be stated.
+ However the disadvantage like with CWA in general is that information which
+ is uncertain will be interpreted in CWA as non-existent.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Non-empty classes
+\end_layout
+
+\begin_layout Standard
+Another principle of CRL is that all classes are considered non-empty, that
+ is at any given time they will contain atleast one member.
+ If at any point all members leave their class thus making it an empty then
+ that class will cease to be part of the CRL.
+ The reason for why CRL can only handle non-empty classes is that there
+ are multiple problems inherent to covering the general view that classes
+ can be either empty or non-empty.
+ Primarily non-classes from an ontological point of view are uninteresting.
+ This means that to cover this uninteresting case we have to purposely increase
+ the complexity in the ontological expression.
+ Such as the case of every A is B does not entail Some B is A, which we
+ showed in our classification logic description.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+The necessity of CRL-Meta for represting relationships in datalog
+\end_layout
+
+\begin_layout Standard
+In order to represent an ,
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+-relationship in datalog the use of skolem functions would required.
+ 
+\end_layout
+
+\begin_layout Standard
+To quote 
+\begin_inset CommandInset citation
+LatexCommand citet
+after "Page 100"
+key "nilsson2011a"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Quotes eld
+\end_inset
+
+The 
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+ relationships cannot be represented in Datalog clauses simply by the well-known
+ rewriting to clause form, since removal of the existential quantiﬁer calls
+ for Skolem functions introducing compound terms
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Thus we will need the CRL to change to metalogical level such that individuals
+ of classes are no longer the focus, but rather the classes themselves.
+ This is why CRL-Meta is necessary.
 \end_layout
 
 \end_body
