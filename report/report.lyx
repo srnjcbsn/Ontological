@@ -178,7 +178,7 @@ filename "prolog_implementation.lyx"
 LatexCommand bibtex
 btprint "btPrintAll"
 bibfiles "refs"
-options "plain"
+options "biochem"
 
 \end_inset
 

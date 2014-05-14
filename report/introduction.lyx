@@ -65,17 +65,17 @@
 \begin_body
 
 \begin_layout Standard
-To formally describe the relations of an ontology in logic, there is two
- different approaches either one based on an OWA (open world assumption)
- or a CWA (closed world assumption), both of these are well studied and
- have languages to accurately describe an ontology.
- In this communication we will introduce classification logic based on OWA
- and class relationship logic based on CWA, and how to use these languages
- to express the ontology of the pancreas.
- For the class relationship logic we will show how it can be expressed in
- a modern programming language specifically swi-prolog.
- Furthermore, we will show how to properly specify the logical relationships
- in prolog to avoid the termination problem.
+In bioinformatics defining an ontology logically such that it is possible
+ to query it for information, can be problematic if a strict methodology
+ is not defined.
+ In this paper we will describe two logics, CL (Classification Logic) and
+ CRL (Class Relationship Logic).
+ Which we will show can be used in conjunction with a modern logical programming
+ language, to describe the ontology of the pancreas, as presented by biomedical
+ specialist.
+ We will begin with CL which we will use as a stepping stone to CRL, as
+ CL showcases why some of the guiding principles of CRL are necessary inorder
+ to give a concise expression of an ontology.
 \end_layout
 
 \end_body
