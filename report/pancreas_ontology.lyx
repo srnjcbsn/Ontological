@@ -828,15 +828,15 @@ B
 .
  In the pancreas ontology, the classes 
 \emph on
-pancreatic cell
+pancreatic_cell
 \emph default
  and 
 \emph on
-endocrine cell
+endocrine_cell
 \emph default
  overlap on the class 
 \emph on
-endocrine pancreatic cell
+endocrine pancreatic_cell
 \emph default
 .
  Disjointness of two classes 

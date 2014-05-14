@@ -71,12 +71,21 @@ CRL-meta
 \end_layout
 
 \begin_layout Standard
-In order to represent an 
+CRL, as it has been introduced above, concerns itself with individuals'
+ relations between classes.
+ In this section we will introduce a metalogic known as CRL-meta, which
+ concerns itself only with classes and their relations.
+ As such, there is no need for the quantifiers, and their removal allows
+ us to intoduce this metalogic in Datalog.
+\end_layout
+
+\begin_layout Standard
+The problem is that 
 \begin_inset Formula $\forall\exists$
 \end_inset
 
--relationship in datalog the use of skolem functions would required.
- 
+-relations contains an existential quantifier, which we can not readily
+ represent it as a datalog clause.
 \end_layout
 
 \begin_layout Standard
@@ -106,16 +115,6 @@ The
 \end_inset
 
  
-\end_layout
-
-\begin_layout Standard
-Thus we will need the CRL to change to metalogical level such that individuals
- of classes are no longer the focus, but rather the classes themselves.
- This is why 
-\shape smallcaps
-CRL-meta
-\shape default
- is necessary.
 \end_layout
 
 \begin_layout Standard
