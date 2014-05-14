@@ -1,0 +1,251 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,shapes,topaths}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+In CRL-Meta, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\forall x\left(c(x)\rightarrow\exists y\left(r(x,y)\land d(y)\right)\right)$
+\end_inset
+
+ is encoded as the predicate 
+\begin_inset Formula $\forall\exists\left(c,r,y\right)$
+\end_inset
+
+ with ground terms (we do not concern ourselves with individuals in classes,
+ only relations between classes).
+ Similarly for the other schemes.
+\end_layout
+
+\begin_layout Itemize
+what is class relationship logic
+\end_layout
+
+\begin_layout Itemize
+CRL and CRL-Meta
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CRL describes class membership while CRL-Meta describes relations between
+ classes 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+, 
+\begin_inset Formula $\exists\forall$
+\end_inset
+
+, 
+\begin_inset Formula $\exists\exists$
+\end_inset
+
+, and 
+\begin_inset Formula $\forall\forall$
+\end_inset
+
+ schemes, 
+\begin_inset Formula $\forall\exists\left(c,r,y\right)=\forall x\left(c(x)\rightarrow\exists y\left(r(x,y)\land d(y)\right)\right)$
+\end_inset
+
+ is the most relevant
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Explain is_a, has_part, part_for and part_of in terms of 
+\begin_inset Formula $Q'Q''$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Classes are non-empty, no null class (
+\begin_inset Formula $\exists x\ c(x)$
+\end_inset
+
+ for any 
+\begin_inset Formula $c$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+CRL operates under the CWA.
+\end_layout
+
+\begin_layout Itemize
+is_a is transitive 
+\begin_inset Formula 
+\[
+is\_a\left(X,Y\right)\leftarrow is\_a\left(X,Z\right)\land is\_a\left(Z,Y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Inheritance rules:
+\begin_inset Formula 
+\begin{equation}
+\frac{\forall\exists\left(C,R,D\right)\qquad isa\left(C',C\right)}{\forall\exists\left(C',R,D\right)}\label{eq:inheritax1-1}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\frac{\forall\exists\left(C,R,D\right)\qquad isa\left(D,D'\right)}{\forall\exists\left(C,R,D'\right)}\label{eq:inheritax2-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+disjointness, overlap
+\begin_inset Formula 
+\begin{equation}
+overlap\left(C,D\right)\leftarrow isa\left(X,C\right)\land isa\left(X,D\right)\label{eq:overlap_crl-1}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+disjoint\left(C,D\right)\leftarrow\nvdash overlap\left(C,D\right)\label{eq:disjoint_crl-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Taxonomy (is_a)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+is_a is special case of 
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+ with 
+\begin_inset Formula $r$
+\end_inset
+
+ being 
+\begin_inset Formula $=$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+inclusion (is_a) is a partial order (transitive, reflexive, antisymmetric)
+ on the meta level.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Partonomy (has_part, part_for) also secretes?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+only 
+\begin_inset Formula $\forall\exists$
+\end_inset
+
+ is relevant in the pancreas ontology
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
