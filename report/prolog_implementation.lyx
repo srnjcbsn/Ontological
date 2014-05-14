@@ -1030,7 +1030,7 @@ is_a
 \begin_layout Description
 
 \family typewriter
-symmetric_with
+symmetric
 \family default
  is when a class has a symmetric relation with another class, such that
  
