@@ -68,12 +68,44 @@ Classification logic is one of the older logics, it dates back to the greeks
  under the name syllogistic logic.
  It structures logic as sentences, where classes are words and phrases in
  the sentence.
- For instance we can have a sentence Every beta_cell is cell, thus stating
- that Every instance of a class beta_cell is an instance of a class cell.
+ For instance we can have a sentence 
+\begin_inset Quotes eld
+\end_inset
+
+Every 
+\emph on
+beta cell
+\emph default
+ is 
+\emph on
+cell
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, thus stating that every instance of the class 
+\emph on
+beta cell
+\emph default
+ is an instance of the class 
+\emph on
+cell
+\emph default
+.
+ From 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Chapter 5"
+key "nilsson-a"
+
+\end_inset
+
+ we present the following definitions.
 \end_layout
 
 \begin_layout Standard
-The different sentences in classification logic is defined as.
+The different sentences in classification logic are defined as.
 \end_layout
 
 \begin_layout Standard
@@ -121,7 +153,7 @@ X\text{ is }P
 \end_layout
 
 \begin_layout Standard
-With their semantical meaning interpretated as follows:
+With their semantical meaning interpreted as follows:
 \end_layout
 
 \begin_layout Standard
@@ -169,8 +201,8 @@ With their semantical meaning interpretated as follows:
 \end_layout
 
 \begin_layout Standard
-With this inpretation we then present the following set of incomplete inference
- rules for classification logic:
+With this interpretation we then present the following incomplete set of
+ inference rules for classification logic:
 \end_layout
 
 \begin_layout Standard
