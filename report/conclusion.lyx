@@ -60,7 +60,18 @@
 \begin_body
 
 \begin_layout Standard
-
+An ontology can thus be implemented in prolog based on the relationship
+ definitions provided by CRL.
+ Hence biomedical ontology data can be recorded into a logical system, which
+ allows said system to provide biomedical specialists with additional informatio
+n derived from the data.
+ By going through the two logics Classification logic and Class relationship
+ Logic, we have provided an adequete foundation for understanding the underlying
+ problems.
+ For further study we recommend looking into querying for the paths of relations
+ between classes, and using these to provide enhanced understanding of ontologie
+s.
+ 
 \end_layout
 
 \end_body
