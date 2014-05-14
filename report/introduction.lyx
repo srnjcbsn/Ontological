@@ -65,17 +65,19 @@
 \begin_body
 
 \begin_layout Standard
-In bioinformatics defining an ontology logically such that it is possible
- to query it for information, can be problematic if a strict methodology
- is not defined.
- In this paper we will describe two logics, CL (Classification Logic) and
- CRL (Class Relationship Logic).
- Which we will show can be used in conjunction with a modern logical programming
- language, to describe the ontology of the pancreas, as presented by biomedical
- specialist.
+In this paper we will introduce logics for describing ontologies with a
+ focus on the biomedical domain.
+ We will present two logics, namely CL (Classification Logic) and CRL (Class
+ Relationship Logic), which we will show can be used in conjunction with
+ a modern logical programming language to describe the biomedical ontology,
+ as presented by domain specialists.
+ The resulting logical system can then be queried for partonomic and taxonomic
+ relations.
  We will begin with CL which we will use as a stepping stone to CRL, as
- CL showcases why some of the guiding principles of CRL are necessary inorder
- to give a concise expression of an ontology.
+ CL showcases why some of the guiding principles of CRL are necessary in
+ order to give a concise expression of an ontology.
+ Lastly, we will present an implementation of such a system, based on the
+ anatomy of the pancreas.
 \end_layout
 
 \end_body

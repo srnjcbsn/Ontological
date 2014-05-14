@@ -68,7 +68,7 @@ Our prolog program is designed for class relationship queries in the pancreas
 
 \begin_layout Standard
 The program consists of the definitions to query for relationship information
- as defined by the CRL (see 
+ as defined by CRL (see 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sub:relations.pl"
@@ -116,7 +116,7 @@ reference "sec:The-pancreas-ontology"
 
 \end_inset
 
-) we determined that there are five types of relations, namely 
+) we presented five types of relations, namely 
 \emph on
 is_a
 \emph default
@@ -142,67 +142,15 @@ secretes
 \emph on
 part_of
 \emph default
- as it can be derived from the rule that a class 
-\emph on
-A 
-\emph default
-has the 
-\emph on
-part_of
-\emph default
- relation with respect to 
-\emph on
-B
-\emph default
- if both 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-B
-\emph default
- 
-\emph on
-part_for
-\emph default
- 
-\emph on
-A
-\emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-A
-\emph default
- 
+ as it can be derived from 
 \emph on
 has_part
 \emph default
- 
+ and 
 \emph on
-B
+part_for
 \emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- as defined in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "rosse2004a"
-
-\end_inset
-
-.
- 
+ relations.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -210,11 +158,17 @@ Storing data in the database
 \end_layout
 
 \begin_layout Standard
-As data must be defined in CRL-Meta, the classes as well as the relations
- are defined as constants, including class inclusion as it is a special
- case of a relation.
- Furthermore, we require that all classes are explicitly recorded with the
- 
+As data must be defined in CRL-
+\shape smallcaps
+meta
+\shape default
+, the classes as well as the relations are defined as constants, including
+ class inclusion (
+\family typewriter
+is_a
+\family default
+), as it is trated as a special relation.
+ We require that all classes are explicitly recorded with the 
 \family typewriter
 class/1
 \family default
@@ -241,7 +195,13 @@ class(A)
 \end_layout
 
 \begin_layout Standard
-where A is the class he wants to be part of the database such as 
+where 
+\family typewriter
+\emph on
+A
+\family default
+\emph default
+ is the class he wants to be part of the database such as 
 \emph on
 cell
 \emph default
@@ -337,16 +297,8 @@ where
 R
 \family default
 \emph default
- is the relation that the user want to check, which can be 
-\emph on
-is_a
-\emph default
-, 
-\emph on
-has_part
-\emph default
-, etc.
- it is also possible to leave 
+ is the relation that the user want to check.
+ It is possible to leave 
 \family typewriter
 \emph on
 R
@@ -365,7 +317,7 @@ A
 B
 \family default
 \emph default
-, instead fo a single, specific relation.
+ instead fo a single, specific relation.
 \end_layout
 
 \begin_layout Description
@@ -413,7 +365,7 @@ To define an
 \begin_inset Formula $\forall\exists$
 \end_inset
 
- query we set it up as three indivual rules: the identity rule of 
+ query we set it up as three indivual rules: the reflexivity rule of 
 \emph on
 is_a
 \emph default
@@ -422,7 +374,7 @@ is_a
 part_of
 \emph default
 .
- The identity rule is trivial as it is defined as:
+ The reflexivity rule is trivial as it is defined as:
 \end_layout
 
 \begin_layout Standard
@@ -525,8 +477,8 @@ transitivity(R, A, C) :-
 \end_layout
 
 \begin_layout Standard
-Our definition of transitivity is not exactly the same as the crl version
- stated in 
+Our definition of transitivity is not exactly the same as the CRL version
+ presented in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "eq:transitivity_crl"
@@ -537,7 +489,7 @@ reference "eq:transitivity_crl"
  in prolog.
  The version which we have defined accomplishes the exact same rule but
  requires data to be present for it pursue the recursion path.
- If we chose to define it as the crl version it would look like this
+ If we chose to define it as the CRL version it would look like this
 \end_layout
 
 \begin_layout Standard
@@ -571,9 +523,9 @@ transitivity(R, A, C) :-
 \end_layout
 
 \begin_layout Standard
-However as prolog does a DFS (depth-first search) it would match on the
- first transitivity predicate at the recursion rule, and given that the
- variable 
+However as prolog does a depth-first search, it would match on the first
+ transitivity predicate at the recursion rule, and given that the variable
+ 
 \family typewriter
 \emph on
 B
@@ -584,9 +536,8 @@ B
 \end_layout
 
 \begin_layout Standard
-Next in the transitivity rules we need to define a rule to accomodate class
- inheritance, as such the incorporation of the inheritance axioms are defined
- as
+The relationship inheritance axioms are accomodated in the transitivity
+ predicate with the following clause:
 \end_layout
 
 \begin_layout Standard
@@ -616,61 +567,21 @@ transitivity(R,A,C):-
 	transitivity(R,B,C).
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-where if you replace 
-\family typewriter
-\emph on
-A
-\family default
-\emph default
- with 
-\family typewriter
-\emph on
-C'
-\family default
-\emph default
-, 
-\family typewriter
-\emph on
-C
-\family default
-\emph default
- with 
-\family typewriter
-\emph on
-D
-\family default
-\emph default
- and 
-\family typewriter
-\emph on
-B
-\family default
-\emph default
- with 
-\family typewriter
-\emph on
-C
-\family default
-\emph default
-, you will get the exact same as defined in 
+The above is the clause representing the inheritance rule in 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "BROKEN: Format: eq:inheritax1"
+reference "eq:inheritax1"
 
 \end_inset
 
-.
- Furthermore notice that as we do not recognize 
+, its dual is defined similarly.
+ Notice that as we do not recognize 
 \emph on
 is_a
 \emph default
@@ -679,19 +590,11 @@ is_a
 is_a
 \emph default
  to avoid a duplicate answer.
- The same holds for 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "BROKEN: Format: eq:inheritax2"
-
-\end_inset
-
-, which is trivial once you understand the first.
+ 
 \end_layout
 
 \begin_layout Standard
-A last thing to note is that to avoid duplicate answers we have chosen to
- wrap our 
+To avoid duplicate answers we have wrapped our 
 \family typewriter
 ae
 \family default
@@ -699,8 +602,8 @@ ae
 \family typewriter
 setof
 \family default
- which filters the answer.
- This has no theoretical value, but is rather convenient.
+ call, which returns unique answers.
+ This is implemented purely for convenience.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -856,7 +759,7 @@ ancestor(X, A), ancestor(X, B)
 \end_layout
 
 \begin_layout Standard
-combined this will find all overlaps according to 
+Combined this will find all overlaps according to 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "eq:overlap_crl"
@@ -1049,7 +952,7 @@ Error checking
 \end_layout
 
 \begin_layout Standard
-When recording data into the database input errors can occur easily which
+When recording data into the database, input errors can occur easily which
  will cause properties of the relations to no longer hold.
  Thus it is convient for a user to be able to check the database in real
  time.
@@ -1083,7 +986,7 @@ O
 \end_layout
 
 \begin_layout Standard
-There are three different types of errors that can occur in our database
+There are three different types of errors that can occur in our database:
 \end_layout
 
 \begin_layout Description
@@ -1091,8 +994,25 @@ There are three different types of errors that can occur in our database
 \family typewriter
 class_missing
 \family default
- is when a class has a relation with another class but is not defined in
- our class table.
+ appears when a constant 
+\family typewriter
+\emph on
+a
+\family default
+\emph default
+ appears as a class in an 
+\family typewriter
+\emph on
+ae_relation/3
+\family default
+\emph default
+ predicate, but no 
+\family typewriter
+\emph on
+class(a)
+\family default
+\emph default
+ predicate can be found.
 \end_layout
 
 \begin_layout Description
@@ -1100,9 +1020,11 @@ class_missing
 \family typewriter
 reflexive
 \family default
- is when a relation is found to be reflexive as the property of all our
- relations is that they are irreflexive, this error will ignore the is_a
- relation as that relation in constrast to the others actually is reflexive.
+ appears when any relation other than 
+\family typewriter
+is_a
+\family default
+ is found to be reflexive.
 \end_layout
 
 \begin_layout Description
@@ -1110,17 +1032,33 @@ reflexive
 \family typewriter
 symmetric_with
 \family default
- is when a class has a symmetric relation with another class, using the
- definition of symmetri from 
-\begin_inset CommandInset ref
-LatexCommand formatted
-reference "eq:symmetric_crl"
-
-\end_inset
-
+ is when a class has a symmetric relation with another class, such that
+ 
+\family typewriter
+\emph on
+A
+\family default
+\emph default
+ is a subclass of 
+\family typewriter
+\emph on
+B
+\family default
+\emph default
+ and 
+\family typewriter
+\emph on
+B
+\family default
+\emph default
+ is a subclass of 
+\family typewriter
+\emph on
+A
+\family default
+\emph default
 .
- The output will the two classes which causes the symmetri and with which
- relation.
+ The answer will be the two symmetric classes.
 \end_layout
 
 \end_body
