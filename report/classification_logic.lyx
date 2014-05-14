@@ -74,7 +74,7 @@ Classification logic is one of the older logics, it dates back to the greeks
 
 Every 
 \emph on
-beta cell
+beta_cell
 \emph default
  is 
 \emph on
@@ -86,7 +86,7 @@ cell
 
 , thus stating that every instance of the class 
 \emph on
-beta cell
+beta_cell
 \emph default
  is an instance of the class 
 \emph on
@@ -397,7 +397,7 @@ In the pancreas ontology, we would introduce the relations
 
 Every 
 \emph on
-endocrine_pancreatic_cell
+endocrine pancreatic cell
 \emph default
  is 
 \emph on

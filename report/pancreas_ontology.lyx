@@ -292,6 +292,15 @@ A
  as a part
 \end_layout
 
+\begin_layout Standard
+We state, without proof, that the 
+\emph on
+is_a
+\emph default
+ relation is transitive, antisymmetric and reflexive, while the other relations
+ are irreflexive.
+\end_layout
+
 \begin_layout Subsection
 The pancreas ontology
 \begin_inset CommandInset label
